@@ -63,6 +63,7 @@
     font-size: 0.9rem;
     text-align: left;
     height: min-content;
+    margin-right: 8rem;
 
   }
   .cooperate .cooporate_right_text{
