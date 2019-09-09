@@ -5,6 +5,7 @@
       <div v-for="(item,index) in header2Text" :class="{'choseHeader':index==choseIndex}" :key="index"
         @click="goto(item.router,index)">
         {{item.title}}
+        <span v-if="index<header2Text.length-1"></span>
       </div>
     </div>
     <div class="pageContain">
@@ -98,29 +99,47 @@
 
   .header1 {
     height: 55px;
-    background: #484747;
+    background: rgb(232, 232, 232);
     padding: 0 15%;
     line-height: 55px;
     display: flex;
     justify-content: space-around;
-    color: white;
+    color: black;
   }
 
   .header1>div {
     padding: 0 20px;
     cursor: pointer;
+    font-size: 1.2rem;
+    border-bottom: 2px solid transparent;
+    margin: 0 5px;
+    width: 13%;
+    font-weight: 400;
+    position: relative;
+  }
+  .header1 span{
+    position:absolute;
+    top: 35%;
+    right: -5px;
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background: black;
+
   }
 
   .header1>div:hover {
-    background: white;
-    color: black;
+  
+    color: #359b34;
+    border-bottom: 2px solid #359b34;
   }
 
   .header1 .choseHeader {
-    background: white;
-    color: black;
+    /* background:; */
+    color: #359b34;
     padding: 0 20px;
     cursor: pointer;
+    border-bottom: 2px solid #359b34;
   }
   .pageContain{
     min-height: calc(100vh - 150px);

@@ -6,10 +6,7 @@
       <img src="../../assets/img/logo1.png" alt="">
       <div class="left-text">
         <div>
-          赣之韵
-        </div>
-        <div>
-          GANZHIYUN
+          广州赣之韵科技有限公司
         </div>
       </div>
     </div>
@@ -35,21 +32,21 @@
   </script>
 <style>
 .mainHeader .header{
-    padding: 0.625rem 1.875rem;
+    padding: 0.625rem 8.875rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
   .mainHeader .header .left {
     display: flex;
-    width: 150px;
     align-items: center;
     
   }
  .mainHeader .header .left-text{
-      font-size: 1rem;
+   
+      font-size: 1.5rem;
       font-weight: bolder;
-      color: #1cfa2a;
+      color: #359b34;
   }
 
 .mainHeader .header img {
@@ -58,7 +55,8 @@
   }
 .mainHeader  .header .right{
       color: black;
-      font-size: 0.875rem;
+      font-size: 1.2rem;
+      font-weight: bold;
   }
 
 

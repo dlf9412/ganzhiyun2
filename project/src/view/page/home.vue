@@ -229,7 +229,7 @@
 
   .home .service {
     padding: 1rem 8%;
-    background: #ccc;
+    /* background: #ccc; */
 
   }
   .home .service .serviceContain{
