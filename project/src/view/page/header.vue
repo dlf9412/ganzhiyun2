@@ -44,8 +44,9 @@
   }
  .mainHeader .header .left-text{
    
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: bolder;
+      margin-left: 10px;
       color: #359b34;
   }
 
@@ -55,8 +56,9 @@
   }
 .mainHeader  .header .right{
       color: black;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: bold;
+      font-family: SourceHanSansSC;
   }
 
 
