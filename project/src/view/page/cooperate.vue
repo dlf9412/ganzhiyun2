@@ -7,16 +7,12 @@
 
       <div class="cooperate_left_menu">
         <div class="leftTitle">
-          招商加盟
+          {{this.title}}
         </div>
-        <div class="leftMsg" :class="{'leftMsgChose':leftMsgChose==1}" @click="changeType(1)"> > 市场现状
-        </div>
-        <div class="leftMsg" :class="{'leftMsgChose':leftMsgChose==2}" @click="changeType(2)">> 盈利模式
-        </div>
-        <div class="leftMsg" :class="{'leftMsgChose':leftMsgChose==3}" @click="changeType(3)">> 合作方式
-        </div>
-        <div class="leftMsg" :class="{'leftMsgChose':leftMsgChose==4}" @click="changeType(4)">> 合作优势
-        </div>
+        <div v-for="item in list" 
+          :key="`cooperate-${item.id}`" 
+          class="leftMsg" :class="{'active':currId== item.id}" 
+          @click="changeType(item)"> > {{item.title}}</div>
       </div>
       <div class="cooporate_right_text">
           <p style="line-height:0; margin-bottom:15px;"><span class="--mb--rich-text" data-boldtype="0" style="font-family:Arial; font-weight:400; font-size:14px; color:rgb(16, 16, 16); font-style:normal; letter-spacing:0px; line-height:20px; text-decoration:none;">一、投资渠道</span></p>
@@ -32,12 +28,18 @@ import cooperateList from "../../mockData/cooperateList.json";
   export default {
     data() {
       return {
-        leftMsgChose: -1
+        title:"招商加盟",
+        list:[],
+        currId: -1
       }
     },
+    mounted(){
+      this.list = cooperateList;
+      console.log(cooperateList);
+    },
     methods: {
-      changeType(index) {
-        this.leftMsgChose = index;
+      changeType(item) {
+        this.currId = item.id;
         // this.choseIndex=-1;
       }
     }
@@ -89,9 +91,8 @@ import cooperateList from "../../mockData/cooperateList.json";
     background: rgb(251, 251, 251)
   }
 
-  .cooperate .leftMsgChose {
+  .cooperate .active {
     background: rgb(251, 251, 251);
-
   }
 
 </style>
