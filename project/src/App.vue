@@ -66,7 +66,9 @@
           var docEl = doc.documentElement,
             resizeEvt = "orientationchange" in window ? "orientationchange" : "resize",
             recalc = function () {
-                var width = docEl.clientWidth / 120;
+              var width=document.getElementById('app').offsetWidth/90.625;
+              console.log(width)
+                // var width = docEl.clientWidth / 120;
                 docEl.style.fontSize = width + "px";
               
             };
@@ -87,6 +89,8 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    width: 1160px;
+    margin: auto
   }
   html{
     min-width: 1180px;

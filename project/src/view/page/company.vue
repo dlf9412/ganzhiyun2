@@ -67,7 +67,7 @@ export default {
 
   .company img {
     width: 100%;
-    height: 30vw;
+    height: 18vw;
   }
 
   .company .contain_1 {
