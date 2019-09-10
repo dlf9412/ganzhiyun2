@@ -7,7 +7,7 @@
 
       <div class="cooperate_left_menu">
         <div class="leftTitle">
-          新闻动态
+          招商加盟
         </div>
         <div class="leftMsg" :class="{'leftMsgChose':leftMsgChose==1}" @click="changeType(1)"> > 市场现状
         </div>
@@ -27,6 +27,8 @@
   </div>
 </template>
 <script>
+
+import cooperateList from "../../mockData/cooperateList.json";
   export default {
     data() {
       return {
