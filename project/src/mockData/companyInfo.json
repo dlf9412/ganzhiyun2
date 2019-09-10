@@ -1,0 +1,16 @@
+{
+    "name":"广州赣之韵科技有限公司",       
+    "logoUrl":"logo.jpg",
+    "QQ":"123456",
+    "weChatQRCodeUrl":"qrcode.jpg",
+    "slogan":"永恒、珍惜、守信、奋斗、坚持、爱心",
+    "desc":"广州赣之韵科技有限公司成立与2019年",
+    "address":"广州市番禺区大龙街水坑环村东路27号301",
+    "bussinessTel":"13812345678",
+    "serviceTel":"020-26602668",
+    "fax":"020-26602668",
+    "mapPosition":{
+        "x":123,
+        "y":123    
+    }
+}
