@@ -11,7 +11,7 @@
         </div>
         <div v-for="item in list" 
           :key="`cooperate-${item.id}`" 
-          class="leftMsg" :class="{'active':currId== item.id}" 
+          class="leftMsg" :class="{'leftMsgChose':currId== item.id}" 
           @click="changeType(item)"> > {{item.title}}</div>
       </div>
       <div class="cooporate_right_text">
@@ -39,6 +39,7 @@ import cooperateList from "../../mockData/cooperateList.json";
     },
     methods: {
       changeType(item) {
+          console.log(item.id)
         this.currId = item.id;
         // this.choseIndex=-1;
       }
@@ -50,7 +51,7 @@ import cooperateList from "../../mockData/cooperateList.json";
 <style>
   .cooperate .titleImg {
     width: 100%;
-    height: 30vw;
+    height: 21rem;
   }
 
   .cooperate .cooperate_contain {
@@ -62,7 +63,9 @@ import cooperateList from "../../mockData/cooperateList.json";
   }
 
   .cooperate .cooperate_left_menu {
-    width: 150px;
+    width: 250px;
+    /* box-sizing: border-box; */
+    /* padding */
     background: rgb(242, 242, 242);
     font-size: 0.9rem;
     text-align: left;

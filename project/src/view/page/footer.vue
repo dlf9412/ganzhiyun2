@@ -5,7 +5,7 @@
 </template>
 <style >
     .footer{
-        background: #ff6f43;
+        background: rgb(37, 155, 36);
         font-size: 1rem;
         color: white;
         text-align: center;

@@ -67,7 +67,7 @@ export default {
 
   .company img {
     width: 100%;
-    height: 18vw;
+    height: 21rem;
   }
 
   .company .contain_1 {
@@ -81,7 +81,7 @@ export default {
 
   .company .contain_1 .left {
     width: 20%;
-    font-size: 4rem;
+    font-size: 3rem;
     height: 100%;
     display: flex;
     align-items: center;
@@ -91,6 +91,9 @@ export default {
       width: 80%;
       text-align: left;
       text-indent: 2rem;
+  }
+  .company .contain_1 p{
+    font-size: 1.09375rem;
   }
 .company .contain_2 {
     width: 100%;

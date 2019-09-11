@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="scroll">
-      <el-carousel height="26vw">
+      <el-carousel height="31.5625rem">
         <el-carousel-item v-for="item in 4" :key="item">
           <h3>{{ item }}</h3>
         </el-carousel-item>
@@ -10,46 +10,42 @@
     <div class="middle">
       <div class="left">
         <div class="header-btn">
-          <el-radio-group v-model="messageShow" style="margin-bottom: 30px;">
-            <el-radio-button label="false">公司新闻</el-radio-button>
-            <el-radio-button label="true">行业新闻</el-radio-button>
-          </el-radio-group>
+          <div class="newTitle">新闻动态</div>
           <div class="left-message">
             <div class="message1" v-if="messageShow==='false'">
               <div v-for="(item,index) in companyMes" :key="index">
-                <img src="../../assets/img/new.png" alt="">
+               
                 <span>{{item.title}}</span>
               </div>
             </div>
-            <div class="message1" v-else>
-              <div v-for="(item,index) in industryMes" :key="index">
-                <img src="../../assets/img/new.png" alt="">
-                <span>{{item.title}}</span>
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>
       <div class="right">
         <div class="Title">高管简介</div>
         <div class="rightContain">
-          <div class="executiveInformation" v-for="(item,index) in executiveInformation" :key="index">
+          
+          <div :class="['executiveInformation',index==0?'bigBoss':'']" v-for="(item,index) in executiveInformation" :key="index">
             <img :src="item.src" alt="">
-            <div>{{item.name}}</div>
-            <div class="detailMsg">{{item.msg}}</div>
+            <div>
+              <div v-if="index==0">{{item.name}}（{{item.title}}）</div>
+              <div v-else>{{item.name}}<br>（{{item.title}}）</div>
+            <div class="detailMsg" v-if="index==0">{{item.msg}}</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="service">
       <div class="Title">
-        驾培生态产品及服务
+        <span>驾培生态产品及服务</span>
       </div>
       <div class="serviceContain">
         <div class="serviceInformation" v-for="(item,index) in serviceData" :key="index">
           <img :src="item.src" alt="">
-          <div>{{item.title}}</div>
-          <div v-for="data1 in item.msg">{{data1.text}}</div>
+          <div class="homeBox3_title">{{item.title}}</div>
+          <div class="homeBox3_contain"><div v-for="data1 in item.msg">{{data1.text}}</div></div>
         </div>
       </div>
     </div>
@@ -61,6 +57,10 @@
       return {
         messageShow: 'false',
         companyMes: [{
+          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
+        }, {
+          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
+        }, {
           title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
         }, {
           title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
@@ -85,22 +85,49 @@
           title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
         }, {
           title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }],
+        },],
         executiveInformation: [{
-          src: require('../../assets/img/tou1.jpg'),
-          name: '张三',
+          src: require('../../assets/img/tou.jpg'),
+          name: '刘武',
+          title:'董事长',
           msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
         }, {
-          src: require('../../assets/img/tou1.jpg'),
-          name: '张三',
+          src: require('../../assets/img/tou.jpg'),
+          name: '杜耀',
+          title:'软件总监',
           msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
         }, {
-          src: require('../../assets/img/tou1.jpg'),
-          name: '张三',
+          src: require('../../assets/img/tou.jpg'),
+          name: '张先胜',
+          title:'硬件总监',
+          msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
+        },{
+          src: require('../../assets/img/tou.jpg'),
+          name: '熊思兵',
+          title:'美术总监',
           msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
         }],
         serviceData: [{
-          src: require('../../assets/img/tou1.jpg'),
+          src: require('../../assets/img/home.jpg'),
+          title: '简易练手驾驶模拟器',
+          msg: [{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          }]
+        },{
+          src: require('../../assets/img/home.jpg'),
           title: '简易练手驾驶模拟器',
           msg: [{
             text: '这是一条数据',
@@ -119,7 +146,45 @@
             
           },]
         },{
-          src: require('../../assets/img/tou1.jpg'),
+          src: require('../../assets/img/home.jpg'),
+          title: '简易练手驾驶模拟器',
+          msg: [{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },]
+        },{
+          src: require('../../assets/img/home.jpg'),
+          title: '简易练手驾驶模拟器',
+          msg: [{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },{
+            text: '这是一条数据',
+            
+          },]
+        },{
+          src: require('../../assets/img/home.jpg'),
           title: '简易练手驾驶模拟器',
           msg: [{
             text: '这是一条数据',
@@ -145,7 +210,7 @@
 </script>
 <style>
   .home .scroll {
-    height: 26vw;
+    height: 31.5625rem;
     width: 100%;
   }
 
@@ -187,12 +252,26 @@
     width: 50%;
     min-width: 400px;
   }
+  .home .middle .left .newTitle,.home .middle .right .Title{
+    margin-bottom: 1rem;
+    font-size: 1.71875rem;
+    text-align: left;
+    /* margin-left: 2.5rem; */
+    
+    border-bottom: 1px solid #ccc;
+    width: 7rem;
+    padding: 2px 5px;
+    padding-bottom: 5px;
+  }
 
   .home .middle .left-message .message1>div {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 10%;
+    
+    font-size: 1.09375rem;
+    padding: 0.8rem 0;
+    padding-left: 1.5rem;
   }
 
   .home .middle .right {
@@ -201,18 +280,39 @@
   }
 
   .home .Title {
-    font-size: 1.5rem;
+    font-size: 1.71875rem;
+  }
+  .home .middle .right .rightContain{
+    width: 100%;
   }
 
   .home .middle .right .executiveInformation {
-    width: 13.5rem;
-    margin: 0 1rem;
+    width: 30%;
+    margin: 0 1%;
   }
+  
 
   .home .middle .right .executiveInformation>img {
     width: 9.375rem;
     height: 9.375rem;
     margin: 5px 0;
+    border-radius: 100%;
+    background-color: #ccc;
+  }
+  .home .middle .right .bigBoss{
+    width: 100%;
+    display: flex;justify-content: flex-start;
+    text-align: left !important;
+    align-items: center;
+    padding-left: 1%;
+  
+  }
+  .home .middle .right .bigBoss img{
+     width: 120px;
+    height: 120px;
+    margin: 5px 0;
+    border-radius: 100%;
+    background-color: #ccc;
   }
 
   .home .middle .right .detailMsg {
@@ -222,8 +322,10 @@
 
   .home .middle .right .rightContain {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-top: 1.5rem;
+    width: 100%;
+    flex-flow: wrap;
 
   }
 
@@ -232,24 +334,44 @@
     /* background: #ccc; */
 
   }
+  .home .service .Title span{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    display: inline-block;
+  }
   .home .service .serviceContain{
       width: 100%;
       display: flex;
       justify-content: flex-start;
-      margin: 2rem 0; 
+      margin: 2rem 0 0; 
       flex-flow: wrap;
+     
+
      
   }
   .home .service .serviceInformation{
-      height: auto;
-      width: 27%;
-      margin: 0 2rem;
-      border: 1px solid white;
+      height: 27rem;
+      width: 29%;
+      margin: 0 2% 2rem;
+       border:1px solid rgb(237, 237, 237);
+       text-align:left;
   }
   .home .service .serviceInformation >img{
       width: 100%;
       height: 15rem;
       
+  }
+  .home .homeBox3_title{
+    padding-left: 1rem;
+    color: rgb(255, 112, 67);
+    font-size: 1.25rem;
+  }
+  .home .homeBox3_contain{
+    font-size: 1rem;
+    
+  }
+  .home .homeBox3_contain div{
+    padding: 4px 0px 0px 1rem;
   }
 
 </style>

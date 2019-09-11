@@ -65,7 +65,7 @@ export default {
 <style >
     .product .titleImg {
     width: 100%;
-    height: 30vw;
+    height: 21rem;
   }
   .product .contain{
       padding: 2rem 10% 2rem;
