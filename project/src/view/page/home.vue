@@ -14,24 +14,27 @@
           <div class="left-message">
             <div class="message1" v-if="messageShow==='false'">
               <div v-for="(item,index) in companyMes" :key="index">
-               
                 <span>{{item.title}}</span>
               </div>
             </div>
-           
           </div>
         </div>
       </div>
       <div class="right">
         <div class="Title">高管简介</div>
         <div class="rightContain">
-          
-          <div :class="['executiveInformation',index==0?'bigBoss':'']" v-for="(item,index) in executiveInformation" :key="index">
-            <img :src="item.src" alt="">
-            <div :class="index==0?'bigBoss_div':''">
-              <div v-if="index==0">{{item.name}}（{{item.title}}）</div>
-              <div v-else>{{item.name}}<br>（{{item.title}}）</div>
-            <div class="detailMsg" v-if="index==0">{{item.msg}}</div>
+          <div class="bigBoss" v-for="(item,index) in bigBoss()" :key="index">
+            <img :src="item.src" :alt="item.name+' '+ item.title">
+            <div class="detail">
+              <div class="peopleTitle">{{item.name}}（{{item.title}}）</div>
+              <div class="detailMsg">{{item.msg}}</div>
+            </div>
+          </div>
+
+          <div class="executiveInformation" v-for="(item,index) in otherPeoples()" :key="index">
+            <img :src="item.src" :alt="item.name+' '+ item.title">
+            <div class="detail">
+              <div>{{item.name}}<br>（{{item.title}}）</div>
             </div>
           </div>
         </div>
@@ -45,7 +48,9 @@
         <div class="serviceInformation" v-for="(item,index) in serviceData" :key="index">
           <img :src="item.src" alt="">
           <div class="homeBox3_title">{{item.title}}</div>
-          <div class="homeBox3_contain"><div v-for="data1 in item.msg">{{data1.text}}</div></div>
+          <div class="homeBox3_contain">
+            <div v-for="data1 in item.msg">{{data1.text}}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -87,22 +92,23 @@
           title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
         },],
         executiveInformation: [{
-          src: require('../../assets/img/tou.jpg'),
+          src: require('../../assets/img/people.jpg'),
           name: '刘武',
+          isMain:true,
           title:'董事长',
           msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
         }, {
-          src: require('../../assets/img/tou.jpg'),
+          src: require('../../assets/img/people.jpg'),
           name: '杜耀',
           title:'软件总监',
           msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
         }, {
-          src: require('../../assets/img/tou.jpg'),
+          src: require('../../assets/img/people.jpg'),
           name: '张先胜',
           title:'硬件总监',
           msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
         },{
-          src: require('../../assets/img/tou.jpg'),
+          src: require('../../assets/img/people.jpg'),
           name: '熊思兵',
           title:'美术总监',
           msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
@@ -204,11 +210,19 @@
           },]
         }]
       }
+    },
+    methods:{
+      bigBoss(){
+        return this.executiveInformation.filter(item=>item.isMain);
+      },
+      otherPeoples(){
+        return this.executiveInformation.filter(item=>!item.isMain);
+      }
     }
   }
 
 </script>
-<style>
+<style >
   .home .scroll {
     height: 31.5625rem;
     width: 100%;
@@ -237,27 +251,24 @@
   }
 
   .home .middle {
-    padding: 2% 8%;
+    padding: 15px 0;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     color: black;
     flex-flow: wrap;
-
   }
 
   .home .middle .left {
     text-align: center;
-    width: 50%;
-    min-width: 400px;
+    width: 618px;
+    padding-left: 2px;
   }
   .home .middle .left .newTitle,.home .middle .right .Title{
     margin-bottom: 1rem;
     font-size: 1.71875rem;
     text-align: left;
-    /* margin-left: 2.5rem; */
-    
     border-bottom: 1px solid #ccc;
     width: 7rem;
     padding: 2px 5px;
@@ -275,22 +286,19 @@
   }
 
   .home .middle .right {
-    width: 50%;
+    width: 535px;
+    padding-right: 5px;
     text-align: center;
   }
 
   .home .Title {
     font-size: 1.71875rem;
   }
-  .home .middle .right .rightContain{
-    width: 100%;
-  }
 
   .home .middle .right .executiveInformation {
-    width: 30%;
-    margin: 0 1%;
+    width: 120px;
+    margin: 5px 20px;
   }
-  
 
   .home .middle .right .executiveInformation>img {
     width: 9.375rem;
@@ -300,7 +308,7 @@
     background-color: #ccc;
   }
   .home .middle .right .bigBoss{
-    width: 100%;
+    width: 98%;
     display: flex;justify-content: flex-start;
     text-align: left !important;
     align-items: center;
@@ -320,9 +328,15 @@
     background-color: #ccc;
   }
 
+  .home .middle .right .peopleTitle{
+    font-weight: 600;
+    padding: 0 15px 10px 15px;
+  }
+
   .home .middle .right .detailMsg {
     text-align: left;
-    margin: 5px 0;
+    padding: 0 15px;
+    line-height: 21px;
   }
 
   .home .middle .right .rightContain {
