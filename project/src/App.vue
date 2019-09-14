@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
-    <div class="header1">
+    <div class="nav">
       <div v-for="(item,index) in header2Text" :class="{'choseHeader':index==choseIndex}" :key="index"
         @click="goto(item.router,index)">
         {{item.title}}
@@ -16,8 +16,8 @@
 </template>
 
 <script>
-  import Header from './view/page/header'
-  import Footer from './view/page/footer'
+  import Header from './components/header'
+  import Footer from './components/footer'
   export default {
     name: 'App',
     components: {
@@ -67,8 +67,6 @@
             resizeEvt = "orientationchange" in window ? "orientationchange" : "resize",
             recalc = function () {
               var width=document.getElementById('app').offsetWidth/90.625;
-              console.log(width)
-                // var width = docEl.clientWidth / 120;
                 docEl.style.fontSize = width + "px";
               
             };
@@ -84,7 +82,7 @@
 
 <style>
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: '苹方黑体', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -101,27 +99,25 @@
     padding: 0px;
   }
 
-  .header1 {
+  .nav {
     height: 55px;
     background: rgb(232, 232, 232);
-    padding: 0 15%;
     line-height: 55px;
     display: flex;
     justify-content: space-around;
     color: black;
   }
 
-  .header1>div {
-    padding: 0 20px;
+  .nav>div {
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     border-bottom: 2px solid transparent;
     margin: 0 5px;
-    width: 13%;
+    width: 192px;
     font-weight: 400;
     position: relative;
   }
-  .header1 span{
+  .nav span{
     position:absolute;
     top: 35%;
     right: -5px;
@@ -129,17 +125,14 @@
     width: 1px;
     height: 20px;
     background: black;
-
   }
 
-  .header1>div:hover {
-  
+  .nav>div:hover {
     color: #359b34;
     border-bottom: 2px solid #359b34;
   }
 
-  .header1 .choseHeader {
-    /* background:; */
+  .nav .choseHeader {
     color: #359b34;
     padding: 0 20px;
     cursor: pointer;
