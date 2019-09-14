@@ -113,24 +113,24 @@
   }
 
   .newInfo .left {
-    width: 150px;
+    width: 175px;
     background: rgb(242, 242, 242);
-    font-size: 0.9rem;
+    font-size: 1.25rem;
     text-align: left;
     height: min-content;
 
   }
 
   .newInfo .leftTitle {
-    font-size: 1rem;
+    font-size: 1.40625rem;
     font-weight: bold;
     text-align: left;
-    padding: 10px 20px;
+    padding: 8px 15px;
     background: rgb(232, 232, 232);
   }
 
   .newInfo .leftMsg {
-    padding: 8px 30px;
+    padding: 8px 20px;
     cursor: pointer;
   }
 
@@ -157,10 +157,12 @@
     padding: 8px 10px;
     border-bottom: 1px solid #ccc;
     cursor: pointer;
+    font-size: 1.25rem;
   }
 
   .newInfo .right  .pagination_{
     margin-top: 20px;
+    text-align: right;
   }
 
 </style>

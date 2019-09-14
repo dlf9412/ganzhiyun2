@@ -28,7 +28,7 @@
           
           <div :class="['executiveInformation',index==0?'bigBoss':'']" v-for="(item,index) in executiveInformation" :key="index">
             <img :src="item.src" alt="">
-            <div>
+            <div :class="index==0?'bigBoss_div':''">
               <div v-if="index==0">{{item.name}}（{{item.title}}）</div>
               <div v-else>{{item.name}}<br>（{{item.title}}）</div>
             <div class="detailMsg" v-if="index==0">{{item.msg}}</div>
@@ -304,8 +304,13 @@
     display: flex;justify-content: flex-start;
     text-align: left !important;
     align-items: center;
+    flex-flow: nowrap;
     padding-left: 1%;
   
+  }
+  .home .middle .right .bigBoss_div{
+    width: calc(100% - 130px);
+    margin-left: 5px;
   }
   .home .middle .right .bigBoss img{
      width: 120px;

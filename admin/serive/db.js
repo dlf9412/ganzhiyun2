@@ -21,14 +21,15 @@ const user=new mongoose.Schema({
 })
 
 
-const homeImg=new mongoose.Schema({
+const homeimg=new mongoose.Schema({
     index:Number,
-    base64Code:String
+    url:String,
+    name:String
 })
 // 要导出的模型
 const models={
     login:mongoose.model('user',user,'user'),
-    homeImg:mongoose.model('homeImg',homeImg,'homeImg')
+    homeImg1:mongoose.model('homeimg',homeimg,'homeimg')
 }
 
 
