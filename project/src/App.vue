@@ -35,7 +35,7 @@
           router: '/company'
         }, {
           title: '新闻中心',
-          router: '/newInfo'
+          router: '/newsList'
         }, {
           title: '产品中心',
           router: '/product'
@@ -82,7 +82,7 @@
 
 <style>
   #app {
-    font-family: '苹方黑体', Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
