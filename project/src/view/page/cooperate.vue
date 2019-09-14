@@ -1,17 +1,14 @@
 <template>
   <div class="cooperate">
-    <img
-      src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567346890962&di=4d81bf7f4dc2249e3f6da290c2c9b149&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F11531599e1b645c722c8d3220f8e64f66d485edd19aba-OCWxd4_fw658"
-      alt="" class="titleImg">
+    <img src="../../assets/img/hzjm.png" alt="" class="titleImg">
     <div class="cooperate_contain">
-
       <div class="cooperate_left_menu">
         <div class="leftTitle">
           {{this.title}}
         </div>
         <div v-for="item in list" 
           :key="`cooperate-${item.id}`" 
-          class="leftMsg" :class="{'leftMsgChose':currId== item.id}" 
+          class="leftMsg" :class="{'active':currId== item.id}" 
           @click="changeType(item)"> > {{item.title}}</div>
       </div>
       <div class="cooporate_right_text">
@@ -30,18 +27,15 @@ import cooperateList from "../../mockData/cooperateList.json";
       return {
         title:"招商加盟",
         list:[],
-        currId: -1
+        currId: 1
       }
     },
     mounted(){
       this.list = cooperateList;
-      console.log(cooperateList);
     },
     methods: {
       changeType(item) {
-          console.log(item.id)
         this.currId = item.id;
-        // this.choseIndex=-1;
       }
     }
   }
@@ -55,39 +49,34 @@ import cooperateList from "../../mockData/cooperateList.json";
   }
 
   .cooperate .cooperate_contain {
-    width: 100%;
-    padding: 30px 10% 20px;
     display: flex;
     justify-content: space-between;
-    box-sizing: border-box;
+    margin: 20px 0;
   }
 
   .cooperate .cooperate_left_menu {
-    width: 250px;
-    /* box-sizing: border-box; */
-    /* padding */
+    width: 200px;
     background: rgb(242, 242, 242);
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: left;
     height: min-content;
     margin-right: 8rem;
-
-  }
-  .cooperate .cooporate_right_text{
-      text-align: left;
   }
 
   .cooperate .leftTitle {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     text-align: left;
-    padding: 10px 20px;
-    background: rgb(232, 232, 232);
+    line-height: 45px;
+    padding:0 15px;
+    background: rgb(145, 144, 144);
   }
 
   .cooperate .leftMsg {
-    padding: 8px 30px;
+    padding: 0 30px;
+    line-height: 40px;
     cursor: pointer;
+    border-bottom: 1px solid #ccc;
   }
 
   .cooperate .leftMsg:hover {
@@ -96,6 +85,11 @@ import cooperateList from "../../mockData/cooperateList.json";
 
   .cooperate .active {
     background: rgb(251, 251, 251);
+  }
+
+  .cooperate .cooporate_right_text{
+    width: 850px;
+    padding: 20px;
   }
 
 </style>

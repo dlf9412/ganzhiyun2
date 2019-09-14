@@ -1,8 +1,6 @@
 <template>
     <div class="product">
-         <img
-      src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567346890962&di=4d81bf7f4dc2249e3f6da290c2c9b149&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F11531599e1b645c722c8d3220f8e64f66d485edd19aba-OCWxd4_fw658"
-      alt="" class="titleImg">
+      <img src="../../assets/img/products.png" alt="" class="titleImg">
       <div class="contain" v-if="choseIndexProduct==-1">
           <div class="productTitle">产品中心</div>
           <div class="show1Product">

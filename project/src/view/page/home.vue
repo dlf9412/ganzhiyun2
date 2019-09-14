@@ -1,55 +1,53 @@
 <template>
   <div class="home">
-    <div class="scroll">
+    <div class="pictureList">
       <el-carousel height="31.5625rem">
         <el-carousel-item v-for="item in 4" :key="item">
           <h3>{{ item }}</h3>
         </el-carousel-item>
       </el-carousel>
     </div>
-    <div class="middle">
-      <div class="left">
-        <div class="header-btn">
-          <div class="newTitle">新闻动态</div>
-          <div class="left-message">
-            <div class="message1" v-if="messageShow==='false'">
-              <div v-for="(item,index) in companyMes" :key="index">
-                <span>{{item.title}}</span>
+    <div class="newsAndPeople">
+      <div class="news">
+          <div class="underLineTitle">新闻动态</div>
+          <div class="newsList">
+              <div v-for="(item,index) in newsList" :key="index" @click="showNewsDetail(item.id)">
+                <span class="newsTitle">{{item.title}}</span>
+                <span class="createTime">{{item.createDate}}</span>
               </div>
-            </div>
           </div>
-        </div>
       </div>
-      <div class="right">
-        <div class="Title">高管简介</div>
+      <div class="peoples">
+        <div class="underLineTitle">高管简介</div>
         <div class="rightContain">
-          <div class="bigBoss" v-for="(item,index) in bigBoss()" :key="index">
-            <img :src="item.src" :alt="item.name+' '+ item.title">
+          <div class="bigBoss" v-for="(item,index) in bigBoss()" :key="'bigBoss'+index">
+            <img src="../../assets/img/people.jpg" :alt="item.name+' '+ item.title">
             <div class="detail">
               <div class="peopleTitle">{{item.name}}（{{item.title}}）</div>
-              <div class="detailMsg">{{item.msg}}</div>
+              <div class="detailMsg">{{item.desc}}</div>
             </div>
           </div>
-
-          <div class="executiveInformation" v-for="(item,index) in otherPeoples()" :key="index">
-            <img :src="item.src" :alt="item.name+' '+ item.title">
-            <div class="detail">
-              <div>{{item.name}}<br>（{{item.title}}）</div>
+          <div class="otherPeopleList">
+            <div class="otherPeople" v-for="(item,index) in otherPeoples()" :key="'otherPeople'+index">
+              <img src="../../assets/img/people.jpg" :alt="item.name+' '+ item.title">
+              <div class="detail">
+                <div class="peopleTitle2">{{item.name}} <br/>（{{item.title}}）</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="service">
-      <div class="Title">
+      <div class="underLineTitle">
         <span>驾培生态产品及服务</span>
       </div>
-      <div class="serviceContain">
-        <div class="serviceInformation" v-for="(item,index) in serviceData" :key="index">
-          <img :src="item.src" alt="">
-          <div class="homeBox3_title">{{item.title}}</div>
-          <div class="homeBox3_contain">
-            <div v-for="data1 in item.msg">{{data1.text}}</div>
+      <div class="serviceList">
+        <div class="serviceItem" :style="`margin-right:`+ getMarginRight(index)" v-for="(item,index) in serviceList" :key="index">
+          <img src="../../assets/img/product.png" :alt="item.title">
+          <div class="serviceItemTitle">{{item.title}}</div>
+          <div class="serviceItemDetail">
+            <div v-for="child in item.desc">{{child.item}}</div>
           </div>
         </div>
       </div>
@@ -60,170 +58,51 @@
   export default {
     data() {
       return {
-        messageShow: 'false',
-        companyMes: [{
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }],
-        industryMes: [{
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班1'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班1'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班1'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        }, {
-          title: '江西软件职业技术大学举办本科层次教育思想学习研讨班'
-        },],
-        executiveInformation: [{
-          src: require('../../assets/img/people.jpg'),
-          name: '刘武',
-          isMain:true,
-          title:'董事长',
-          msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
-        }, {
-          src: require('../../assets/img/people.jpg'),
-          name: '杜耀',
-          title:'软件总监',
-          msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
-        }, {
-          src: require('../../assets/img/people.jpg'),
-          name: '张先胜',
-          title:'硬件总监',
-          msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
-        },{
-          src: require('../../assets/img/people.jpg'),
-          name: '熊思兵',
-          title:'美术总监',
-          msg: '江西赣州人，毕业于江西先锋软件大学软件开发与设计专业；10年驾培行业实战工作经验；驾培模拟器行业资深经理人；理论+模拟+实操课程创始人；'
-        }],
-        serviceData: [{
-          src: require('../../assets/img/home.jpg'),
-          title: '简易练手驾驶模拟器',
-          msg: [{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          }]
-        },{
-          src: require('../../assets/img/home.jpg'),
-          title: '简易练手驾驶模拟器',
-          msg: [{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },]
-        },{
-          src: require('../../assets/img/home.jpg'),
-          title: '简易练手驾驶模拟器',
-          msg: [{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },]
-        },{
-          src: require('../../assets/img/home.jpg'),
-          title: '简易练手驾驶模拟器',
-          msg: [{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },]
-        },{
-          src: require('../../assets/img/home.jpg'),
-          title: '简易练手驾驶模拟器',
-          msg: [{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },{
-            text: '这是一条数据',
-            
-          },]
-        }]
+        newsList: [],
+        peopleList: [],
+        serviceList:[]
       }
     },
+    mounted(){
+      this.newsList = this.getNewsList();
+      this.peopleList = this.getPeopleList();
+      this.serviceList = this.getServiceList();
+    },
     methods:{
+      getNewsList(){
+        const newsList = require("../../mockData/newsList.json");
+        return newsList.normal;
+      },
+      getPeopleList(){
+        return require("../../mockData/peopleList.json");
+      },
+      getServiceList(){
+        return require("../../mockData/serviceList.json");
+      },
       bigBoss(){
-        return this.executiveInformation.filter(item=>item.isMain);
+        return this.peopleList.filter(item=>item.isMain);
       },
       otherPeoples(){
-        return this.executiveInformation.filter(item=>!item.isMain);
+        return this.peopleList.filter(item=>!item.isMain);
+      },
+      getMarginRight(index){
+       return  (index+1)%3===0?'0':'127px';
+      },
+      showNewsDetail(id){
+          this.$router.push({
+          path: '/newsList',
+          query: {
+            id: id
+          }
+        });
       }
     }
   }
 
 </script>
 <style >
-  .home .scroll {
+/** 轮播栏 */
+  .home .pictureList {
     height: 31.5625rem;
     width: 100%;
   }
@@ -250,7 +129,20 @@
     border-radius: 100%;
   }
 
-  .home .middle {
+/** 轮播栏 */
+
+  .underLineTitle{
+    font-size: 1.7rem;
+    text-align: left;
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+    padding-left: 0 5px;
+    line-height: 40px;
+    margin-bottom: 15px;
+  }
+
+/** 新闻动态与高管简介 */
+  .home .newsAndPeople {
     padding: 15px 0;
     width: 100%;
     box-sizing: border-box;
@@ -258,134 +150,126 @@
     justify-content: space-between;
     color: black;
     flex-flow: wrap;
+    border-bottom: 1px solid #ccc;
   }
 
-  .home .middle .left {
-    text-align: center;
+  .home .newsAndPeople .news {
+    text-align: left;
     width: 618px;
     padding-left: 2px;
   }
-  .home .middle .left .newTitle,.home .middle .right .Title{
-    margin-bottom: 1rem;
-    font-size: 1.71875rem;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-    width: 7rem;
-    padding: 2px 5px;
-    padding-bottom: 5px;
-  }
 
-  .home .middle .left-message .message1>div {
+  .home .newsAndPeople .news .newsList > div {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    
-    font-size: 1.09375rem;
-    padding: 0.8rem 0;
-    padding-left: 1.5rem;
+    justify-content:space-between;
+    font-size: 1rem;
+    padding-left: 15px;
+    padding-right: 50px;
+    line-height: 35px;
+    cursor: pointer;
+    text-decoration: none;
+    color:  #2c3e50;
   }
 
-  .home .middle .right {
+  .home .newsAndPeople .news .newsList > div:hover {
+    text-decoration: underline;
+    color: blue;
+  }
+
+  .home .newsAndPeople .peoples {
     width: 535px;
-    padding-right: 5px;
-    text-align: center;
+    text-align: left;
   }
 
-  .home .Title {
-    font-size: 1.71875rem;
-  }
-
-  .home .middle .right .executiveInformation {
-    width: 120px;
-    margin: 5px 20px;
-  }
-
-  .home .middle .right .executiveInformation>img {
-    width: 9.375rem;
-    height: 9.375rem;
+    .home .newsAndPeople .peoples img{
+    width: 95px;
+    height: 95px;
     margin: 5px 0;
     border-radius: 100%;
     background-color: #ccc;
   }
-  .home .middle .right .bigBoss{
+
+  .home .newsAndPeople .peoples .bigBoss{
     width: 98%;
-    display: flex;justify-content: flex-start;
+    display: flex;
+    justify-content: flex-start;
     text-align: left !important;
     align-items: center;
     padding-left: 1%;
-  
-  }
-  .home .middle .right .bigBoss img{
-     width: 120px;
-    height: 120px;
-    margin: 5px 0;
-    border-radius: 100%;
-    background-color: #ccc;
   }
 
-  .home .middle .right .peopleTitle{
+  .home .newsAndPeople .peoples .otherPeopleList{
+      width: 90%;
+      display: flex;
+      justify-content:space-between;
+      margin-top:20px;
+  }
+
+  .home .newsAndPeople .peoples .peopleTitle{
     font-weight: 600;
-    padding: 0 15px 10px 15px;
+    line-height: 30px;
+    padding-left: 15px;
   }
 
-  .home .middle .right .detailMsg {
+  .home .newsAndPeople .peoples .peopleTitle2{
+    text-align: center;
+  }
+
+  .home .newsAndPeople .peoples .detailMsg {
     text-align: left;
     padding: 0 15px;
     line-height: 21px;
   }
 
-  .home .middle .right .rightContain {
+  .home .newsAndPeople .peoples .peoplesContain {
     display: flex;
     justify-content: flex-start;
     margin-top: 1.5rem;
     width: 100%;
     flex-flow: wrap;
-
   }
 
   .home .service {
-    padding: 1rem 8%;
-    /* background: #ccc; */
+    text-align: center;
+    margin-top: 20px;
+  }
 
-  }
-  .home .service .Title span{
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 8px;
-    display: inline-block;
-  }
-  .home .service .serviceContain{
-      width: 100%;
+  .home .service .serviceList{
       display: flex;
-      justify-content: flex-start;
-      margin: 2rem 0 0; 
-      flex-flow: wrap;
-     
+      justify-content:space-start;
+      flex-wrap: wrap;
+  }
+  .home .service .serviceList .serviceItem{
+      height: 380px;
+      width: 300px;
+      margin-bottom: 20px;
+      border:1px solid rgb(237, 237, 237);
+      text-align:left;
+  }
 
-     
-  }
-  .home .service .serviceInformation{
-      height: 27rem;
-      width: 29%;
-      margin: 0 2% 2rem;
-       border:1px solid rgb(237, 237, 237);
-       text-align:left;
-  }
-  .home .service .serviceInformation >img{
+  .home .service .serviceItem >img{
       width: 100%;
       height: 15rem;
-      
+      border: none;
   }
-  .home .homeBox3_title{
-    padding-left: 1rem;
+
+  .home .serviceItemTitle{
+    line-height: 35px;
+    padding-left: 10px;
     color: rgb(255, 112, 67);
     font-size: 1.25rem;
   }
-  .home .homeBox3_contain{
+  .home .serviceItemDetail{
+    line-height: 22px;
     font-size: 1rem;
-    
   }
-  .home .homeBox3_contain div{
+
+  .home .serviceItemDetail div{
     padding: 4px 0px 0px 1rem;
+  }
+
+  .alignLeft{
+    text-align: left;
   }
 
 </style>
