@@ -28,19 +28,19 @@
     },
     methods: {
       getData() {
-        this.$post(this.url.homeImgSelect, {}).then(res => {
+        this.$post(this.url.homeImgSelect, {}).then(res => {//首页轮播查询
           console.log(res)
           if (res.code == 200) {
             if (res.data.length > 0) {
               this.saveIndex = res.data[0].index;
             }
             this.fileList2 = res.data;
-
           }
         })
       },
       handleRemove(file, fileList) {
         console.log(file, fileList);
+        this.getFile(file,fileList)
       },
       handlePreview(file) {
         console.log(file);
@@ -48,12 +48,17 @@
       uploadImg() {
         if (this.saveIndex !== '') {
           console.log(this.fileList2)
-          // this.$post(this.url.homeImgUpdate,{
-          //   index:this.saveIndex,
-          //   fileList:this.fileList2
-          // }).then(res=>{
-          //   console.log(res)
-          // })
+          this.$post(this.url.homeImgUpdate,{
+            index:this.saveIndex,
+            fileList:this.fileList2
+          }).then(res=>{
+            console.log(res)
+            this.$message.success('上传成功')
+            // let that=this;
+            // setTimeout(() => {
+            //   that.getData()
+            // }, 1000);
+          })
         } else {
           this.$post(this.url.homeImgAdd, this.fileList2).then(res => {
             console.log(res)
@@ -62,13 +67,15 @@
             } else {
               this.$message.error('上传失败，请重新上传')
             }
-            this.getData()
+            // this.getData()
           })
         }
+        
 
       },
 
       getFile(file, fileList) {
+
         this.fileList2 = [];
         let i = 0;
         fileList.forEach(file => {

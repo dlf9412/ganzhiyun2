@@ -20,7 +20,7 @@ app.all('*', function(req, res, next) {
 
 
 
-app.use(bodyparser.json())//post转译
+app.use(bodyparser.json({limit:'50mb'}))//post转译
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(cookieParser())
 

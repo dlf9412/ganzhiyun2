@@ -30,6 +30,9 @@ export default {
         getCompanyInfo(){
             return require("../../mockData/companyInfo.json");
         },
+        setMapPos(){
+            
+        }
     }
 }
 </script>
