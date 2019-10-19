@@ -1,9 +1,36 @@
-var urlList={
-    login:'/user/login',
-    register:'/user/register',
-    homeImgSelect:'/user/ImgSelect',
-    homeimgUp:'/user/imgUpdate',
-    homeImgAdd:'/user/imgAdd'
+var urlList = {
+  login: '/user/login',
+  register: '/user/register',
+  homeImgSelect: '/user/ImgSelect',
+  homeimgUp: '/user/imgUpdate',
+  homeImgAdd: '/user/imgAdd',
+  homeImgDelet: '/user/imgDelete',
+  newlistAdd: '/user/newlist/add',
+  newlistDelete: '/user/newlist/delete',
+  newlistUpdata: '/user/newlist/updata',
+  newlistSelect: '/user/newlist/select',
+  productAdd: '/user/product/add',
+  productDelete: '/user/product/delete',
+  productSelect: '/user/product/select',
+  productUpdata: '/user/product/updata',
+  cooporateAdd: '/user/cooporate/add',
+  cooporateDelete: '/user/cooporate/delete',
+  cooporateUpdata: '/user/cooporate/updata',
+  cooporateSelect: '/user/cooporate/select',
+  componyAdd: '/user/compony/add',
+  componyDelete: '/user/compony/delete',
+  componyUpdata: '/user/compony/updata',
+  componySelect: '/user/compony/select',
+  componyintroAdd: '/user/componyintro/add',
+  componyintroSelect: '/user/componyintro/select',
+  enterpriseAdd: '/user/compony/enterprise/add',
+  enterpriseDelete: '/user/compony/enterprise/delete',
+  enterpriseUpdata: '/user/compony/enterprise/updata',
+  enterpriseSelect: '/user/compony/enterprise/select',
+  callMeAdd: '/user/compony/callMe/add',
+  callMeDelete: '/user/compony/callMe/delete',
+  callMeUpdata: '/user/compony/callMe/updata',
+  callMeSelect: '/user/compony/callMe/select',
 }
 
-module.exports=urlList
+module.exports = urlList

@@ -6,9 +6,9 @@ import home from '@/view/home/index'
 import firstPage from '@/view/home/page1'
 import secondPage from '@/view/home/page2'
 import page3 from '@/view/home/page3'
-import page4 from '@/view/home/page3'
-import page5 from '@/view/home/page3'
-import page6 from '@/view/home/page3'
+import page4 from '@/view/home/page4'
+import page5 from '@/view/home/page5'
+import page6 from '@/view/home/page6'
 
 Vue.use(Router)
 
@@ -21,28 +21,28 @@ export default new Router({
     path: '/home',
     name: 'home',
     component: home,
-    redirect:'/home/firstPage',
+    redirect: '/home/firstPage',
     children: [{
       path: '/home/firstPage',
       name: 'firstPage',
       component: firstPage,
-    },{
+    }, {
       path: '/home/secondPage',
       name: 'secondPage',
       component: secondPage,
-    },{
+    }, {
       path: '/home/page3',
       name: 'page3',
       component: page3,
-    },{
+    }, {
       path: '/home/page4',
       name: 'page4',
       component: page4,
-    },{
+    }, {
       path: '/home/page5',
       name: 'page5',
       component: page5,
-    },{
+    }, {
       path: '/home/page6',
       name: 'page6',
       component: page6,
