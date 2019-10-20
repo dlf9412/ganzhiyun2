@@ -1,4 +1,4 @@
-const host = 'http://172.17.27.238:5000'
+const host = 'http://47.240.49.244:5000'
 
 export default {
   login: host + '/user/login',

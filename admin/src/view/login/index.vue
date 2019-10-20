@@ -38,6 +38,7 @@ export default {
         password: this.password
       }).then(res => {
         if (res.code == 200) {
+          sessionStorage.setItem("userInfoStorage", this.input);
           this.$router.push({
             path: "/home",
             query: {

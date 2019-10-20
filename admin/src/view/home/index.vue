@@ -82,6 +82,8 @@ export default {
   },
   methods: {
     goback() {
+      // http://localhost:8080/#/home/firstPage?user=123456
+      sessionStorage.removeItem("userInfoStorage");
       this.$router.push("/");
     },
     goto(url) {

@@ -19,25 +19,27 @@ Vue.prototype.url = httpUrl;
 Vue.use(elementUI)
 /* eslint-disable no-new */
 
-// const whiteList=['/login'];//不需要登录能访问的path
-// router.beforeEach((to, from, next) => {
-//   console.log('beforeEach');
-//   var userInfo= JSON.parse(sessionStorage.getItem('userInfoStorage'));//获取缓存看是否登录过
-//   if(whiteList.indexOf(to.path)<0){//访问了需要登录才能访问的页面
-//     if(userInfo){//登录过来直接进去
-//       next();
-//     }else{
-//       if(to.path=='/login'){
-//         next();
-//       }else{
-//         next('/login');
-//       }
-//     }
-//   }
-//   else{
-//     next();
-//   }
-// });
+const whiteList = ['/login']; //不需要登录能访问的path
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach');
+  var userInfo = JSON.parse(sessionStorage.getItem('userInfoStorage')); //获取缓存看是否登录过
+  console.log(userInfo)
+  if (whiteList.indexOf(to.path) < 0) { //访问了需要登录才能访问的页面
+
+    if (userInfo) { //登录过来直接进去
+      next();
+    } else {
+      if (to.path == '/login') {
+        next();
+      } else {
+        next('/login');
+      }
+    }
+  } else {
+    console.log(from)
+    next();
+  }
+});
 
 
 new Vue({

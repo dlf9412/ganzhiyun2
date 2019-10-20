@@ -6,7 +6,7 @@
       <el-upload
         class="upload-container"
         ref="upload"
-        action="http://localhost:5000/user/imgAdd?index=1"
+        action="http://47.240.49.244:5000/user/imgAdd?index=1"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList"
@@ -35,7 +35,7 @@
       <el-upload
         class="upload-container"
         ref="upload1"
-        action="http://localhost:5000/user/imgAdd?index=11"
+        action="http://47.240.49.244:5000/user/imgAdd?index=11"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList2"
@@ -66,7 +66,7 @@
       <el-upload
         class="upload-container"
         ref="upload2"
-        action="http://localhost:5000/user/imgAdd?index=12"
+        action="http://47.240.49.244:5000/user/imgAdd?index=12"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList3"
@@ -96,7 +96,7 @@
       <el-upload
         class="upload-container"
         ref="upload3"
-        action="http://localhost:5000/user/imgAdd?index=13"
+        action="http://47.240.49.244:5000/user/imgAdd?index=13"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList4"
@@ -126,7 +126,7 @@
       <el-upload
         class="upload-container"
         ref="upload4"
-        action="http://localhost:5000/user/imgAdd?index=14"
+        action="http://47.240.49.244:5000/user/imgAdd?index=14"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList5"
@@ -156,7 +156,7 @@
       <el-upload
         class="upload-container"
         ref="upload5"
-        action="http://localhost:5000/user/imgAdd?index=15"
+        action="http://47.240.49.244:5000/user/imgAdd?index=15"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList6"
@@ -187,7 +187,7 @@
       <el-upload
         class="upload-container"
         ref="upload6"
-        action="http://localhost:5000/user/imgAdd?index=16"
+        action="http://47.240.49.244:5000/user/imgAdd?index=16"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList7"
@@ -219,7 +219,7 @@
       <el-upload
         class="upload-container"
         ref="upload7"
-        action="http://localhost:5000/user/imgAdd?index=17"
+        action="http://47.240.49.244:5000/user/imgAdd?index=17"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList8"
@@ -249,7 +249,7 @@
       <el-upload
         class="upload-container"
         ref="upload8"
-        action="http://localhost:5000/user/imgAdd?index=18"
+        action="http://47.240.49.244:5000/user/imgAdd?index=18"
         :on-preview="handlePreview"
         :before-remove="handleRemove"
         :file-list="fileList9"

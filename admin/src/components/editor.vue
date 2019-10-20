@@ -137,7 +137,7 @@ export default {
       this.editor.customConfig.uploadImgMaxLength = 1;
       //上传图片到服务器可显示上传
 
-      var url = "http://localhost:5000/user/imgAdd?index=3";
+      var url = "http://47.240.49.244:5000/user/imgAdd?index=3";
       this.editor.customConfig.uploadImgServer = url;
 
       //自定义上传图片
@@ -155,7 +155,7 @@ export default {
         var formData = new FormData();
         formData.append("file", files[0]);
 
-        var url = "http://localhost:5000/user/imgAdd?index=3";
+        var url = "http://47.240.49.244:5000/user/imgAdd?index=3";
         that.$post(url, formData).then(res => {
           console.log(res);
           if (res.code == 200) {

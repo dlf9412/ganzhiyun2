@@ -10,7 +10,7 @@ const Date = require('./common');
 const updata = API.updata;
 const delete1 = API.Delete;
 let fs = require('fs');
-const host = 'http://localhost:5000'
+const host = 'http://47.240.49.244:5000'
 
 router.post(httpUrl.callMeAdd, (req, res) => { //添加新闻
   console.log(req.body)

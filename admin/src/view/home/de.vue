@@ -2,16 +2,31 @@
   <div class="page1">
     <div class="contain1">
       <h3>首页轮播修改</h3>
-    
-<el-upload class="upload-container" ref="upload" action="http://localhost:8080/api/upload"
-            :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList" list-type="picture-card"
-            :limit='1' :headers='uploadHeaders' :before-upload="beforeAvatarUpload" :auto-upload="false"
-            :on-success='handleSucess' :on-error='handleError'>
-            <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-            <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过10M</div>
 
-</el-upload>
+      <el-upload
+        class="upload-container"
+        ref="upload"
+        action="http://47.240.49.244:8080/api/upload"
+        :on-preview="handlePreview"
+        :on-remove="handleRemove"
+        :file-list="fileList"
+        list-type="picture-card"
+        :limit="1"
+        :headers="uploadHeaders"
+        :before-upload="beforeAvatarUpload"
+        :auto-upload="false"
+        :on-success="handleSucess"
+        :on-error="handleError"
+      >
+        <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+        <el-button
+          style="margin-left: 10px;"
+          size="small"
+          type="success"
+          @click="submitUpload"
+        >上传到服务器</el-button>
+        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过10M</div>
+      </el-upload>
     </div>
   </div>
 </template>
@@ -105,26 +120,25 @@ export default {
 
 </script>
 <style>
-  .page1 .contain1 {
-    padding: 10px;
-  }
+.page1 .contain1 {
+  padding: 10px;
+}
 
-  .page1 .contain1 h3 {
-    text-align: left;
-    margin: 0px;
-    padding: 0;
-  }
+.page1 .contain1 h3 {
+  text-align: left;
+  margin: 0px;
+  padding: 0;
+}
 
-  .page1 .el-upload-list--picture .el-upload-list__item {
-    width: 22%;
-    margin-left: 10px;
-  }
+.page1 .el-upload-list--picture .el-upload-list__item {
+  width: 22%;
+  margin-left: 10px;
+}
 
-  .page1 .el-upload-list--picture {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-flow: wrap;
-  }
-
+.page1 .el-upload-list--picture {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: wrap;
+}
 </style>

@@ -86,7 +86,7 @@
               <el-upload
                 ref="upload"
                 class="avatar-uploader"
-                action="http://localhost:5000/user/imgAdd?index=5"
+                action="http://47.240.49.244:5000/user/imgAdd?index=5"
                 :show-file-list="false"
                 :on-success="handleSucess"
                 :before-upload="beforeAvatarUpload"
