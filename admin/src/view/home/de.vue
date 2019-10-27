@@ -6,7 +6,7 @@
       <el-upload
         class="upload-container"
         ref="upload"
-        action="http://47.240.49.244:8080/api/upload"
+        action="http://120.79.222.61:5000/user/imgAdd"
         :on-preview="handlePreview"
         :on-remove="handleRemove"
         :file-list="fileList"

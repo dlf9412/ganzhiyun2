@@ -52,7 +52,7 @@
         <div class="compony_contain1">
           <!-- <h3>高管信息</h3> -->
           <el-button class="add_btn" @click="enterprise_add">添加</el-button>
-          <div v-if="enterprise.length==0" style="line-height:45px">暂无数据，请先添加高管信息</div>
+          <div v-if="enterprise.length==0" style="line-height:45px">暂无数据，请先添加信息</div>
           <div v-else>
             <ul class="compony_ul">
               <li
@@ -86,7 +86,7 @@
               <el-upload
                 ref="upload"
                 class="avatar-uploader"
-                action="http://47.240.49.244:5000/user/imgAdd?index=5"
+                action="http://120.79.222.61:5000/user/imgAdd?index=5"
                 :show-file-list="false"
                 :on-success="handleSucess"
                 :before-upload="beforeAvatarUpload"
@@ -423,9 +423,9 @@ export default {
           this.Introduction_title = res.data[0].intro;
           this.textarea = res.data[0].detail;
         } else {
-          this.Introduction_name = res.data[0].name;
-          this.Introduction_title = res.data[0].intro;
-          this.textarea = res.data[0].detail;
+          this.Introduction_name = "";
+          this.Introduction_title = "";
+          this.textarea = "";
         }
       });
     },

@@ -23,6 +23,9 @@ export default {
       this.$post(this.url.componyintroSelect, {}).then(res => {
         console.log(res);
         if (res.code == 200) {
+          if (res.data.length == 0) {
+            return;
+          }
           this.slogan = res.data[0].intro;
           this.companyName = res.data[0].name;
         }

@@ -56,7 +56,7 @@
         <el-upload
           class="upload-container"
           ref="upload"
-          action="http://localhost:5000/user/imgAdd?index=4"
+          action="http://120.79.222.61:5000/user/imgAdd?index=4"
           :before-remove="handleRemove"
           :file-list="fileList2"
           list-type="picture"
@@ -115,7 +115,7 @@ export default {
       newlistData: [],
       value: "",
       currentPage1: 1, //当前显示第几页
-      total: 30,
+      total: 0,
       pagesize: 5, //当前每页显示条数
       choseId: "",
       fileList2: [],

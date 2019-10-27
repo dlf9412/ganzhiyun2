@@ -1,4 +1,4 @@
-const host = 'http://172.17.27.238:5000'
+const host = 'http://120.79.222.61:5000'
 
 export default {
 

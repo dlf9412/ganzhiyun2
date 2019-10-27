@@ -1,8 +1,9 @@
 <template>
   <div class="callMe">
-    <img :src="imgsrc" alt class="titleImg" />
+    <img class="titleImg" v-if="imgsrc==''" src="../../assets/img/timg.jpg" alt />
+    <img v-else :src="imgsrc" alt class="titleImg" />
     <div class="callMe_contain">
-      <div v-if="companyInfo==null">暂无数据</div>
+      <div class="callMe_left" v-if="companyInfo==null">暂无数据</div>
       <div class="callMe_left" v-if="companyInfo!==null">
         <h3>联系我们</h3>
         <div>招商电话：{{companyInfo.merchant}}</div>
@@ -11,7 +12,8 @@
         <div>电子传真：{{companyInfo.fax}}</div>
       </div>
       <div class="callMe_right">
-        <div v-if="companyInfo==null">暂无图片</div>
+        <img v-if="companyInfo==null" src="../../assets/img/timg.jpg" alt />
+        <!-- <div v-if="companyInfo==null">暂无图片</div> -->
         <img v-else :src="companyInfo.callMeImgUrl.url" alt />
       </div>
     </div>
@@ -36,6 +38,10 @@ export default {
         console.log(res);
         if (res.code == 200) {
           // console.log()
+          if (res.data.length == 0) {
+            this.imgsrc = "";
+            return;
+          }
           this.imgsrc = res.data[0].url;
         }
       });
@@ -51,9 +57,7 @@ export default {
         }
       });
     },
-    getCompanyInfo() {
-      return require("../../mockData/companyInfo.json");
-    },
+
     setMapPos() {}
   }
 };

@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <div class="pictureList">
-      <el-carousel height="31.5625rem">
+      <img v-if="imgList.length==0" src="../../assets/img/timg.jpg" alt />
+      <el-carousel v-else height="31.5625rem">
         <el-carousel-item v-for="(item,index) in imgList" :key="index">
           <img :src="item.url" alt />
         </el-carousel-item>
@@ -21,7 +22,8 @@
       <div class="peoples">
         <div class="underLineTitle">高管简介</div>
         <div class="rightContain">
-          <div class="bigBoss" v-for="(item,index) in peopleList" :key="'bigBoss'+index">
+          <div style="text-align:left" v-if="peopleList.length==0">暂无数据</div>
+          <div v-else class="bigBoss" v-for="(item,index) in peopleList" :key="'bigBoss'+index">
             <img :src="item.src" :alt="item.name+' '+ item.title" />
             <div class="detail">
               <div class="peopleTitle">{{item.name}}（{{item.position}}）</div>
@@ -47,7 +49,8 @@
       <div class="underLineTitle">
         <span>驾培生态产品及服务</span>
       </div>
-      <div class="serviceList">
+      <div style="text-align:center;" v-if="serviceList.length==0">暂无数据</div>
+      <div v-else class="serviceList">
         <div
           class="serviceItem"
           :style="`margin-right:`+ getMarginRight(index)"
@@ -90,6 +93,7 @@ export default {
         if (res.code == 200) {
           // console.log()
           this.imgList = res.data;
+          console.log(this.imgList);
         }
       });
       this.$post(this.url.componySelect, {}).then(res => {

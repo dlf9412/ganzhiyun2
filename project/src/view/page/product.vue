@@ -1,9 +1,11 @@
 <template>
   <div class="product">
-    <img :src="imgsrc" alt class="titleImg" />
+    <img class="titleImg" v-if="imgsrc==''" src="../../assets/img/timg.jpg" alt />
+    <img v-else :src="imgsrc" alt class="titleImg" />
     <div class="contain" v-if="choseIndexProduct==-1">
       <div class="productTitle">产品中心</div>
-      <div class="show1Product">
+      <div v-if="productList.length==0" style="margin-top:20px">暂无数据</div>
+      <div class="show1Product" v-else>
         <div
           v-for="(item,index) in productList"
           :key="index"
@@ -75,14 +77,22 @@ export default {
         console.log(res);
         if (res.code == 200) {
           // console.log()
-          this.imgsrc = res.data[0].url;
+          if (res.data.length > 0) {
+            this.imgsrc = res.data[0].url;
+          } else {
+            this.imgsrc = "";
+          }
         }
       });
       this.$post(this.url.productSelect, {}).then(res => {
         console.log(res);
         if (res.code == 200) {
           //   productList;
-          this.productList = res.data;
+          if (res.data.length > 0) {
+            this.productList = res.data;
+          } else {
+            this.productList = [];
+          }
         }
       });
     },

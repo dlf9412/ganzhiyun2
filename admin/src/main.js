@@ -22,7 +22,7 @@ Vue.use(elementUI)
 const whiteList = ['/login']; //不需要登录能访问的path
 router.beforeEach((to, from, next) => {
   console.log('beforeEach');
-  var userInfo = JSON.parse(sessionStorage.getItem('userInfoStorage')); //获取缓存看是否登录过
+  var userInfo = sessionStorage.getItem('userInfoStorage'); //获取缓存看是否登录过
   console.log(userInfo)
   if (whiteList.indexOf(to.path) < 0) { //访问了需要登录才能访问的页面
 

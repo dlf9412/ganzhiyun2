@@ -1,21 +1,24 @@
 <template>
   <div class="company">
-    <el-image v-if="imgsrc==''">
+    <!-- <el-image v-if="imgsrc==''">
       <div slot="error" class="image-slot">
         <i class="el-icon-picture-outline"></i>
       </div>
-    </el-image>
+    </el-image>-->
+    <img v-if="imgsrc==''" src="../../assets/img/timg.jpg" alt />
     <img v-else :src="imgsrc" alt />
     <div class="contain_1">
       <div class="left"></div>
       <div class="right">
-        <p>{{companyDesc}}</p>
+        <p v-if="companyDesc==null">暂无数据</p>
+        <p v-else>{{companyDesc}}</p>
       </div>
     </div>
     <div class="splitLine"></div>
     <div class="contain_2">
       <div class="title">企业实力</div>
-      <div class="contain_2_contain">
+      <h2 v-if="containData.length===0" style="text-align:center">暂无数据</h2>
+      <div v-else class="contain_2_contain">
         <div v-for="(item,index) in containData" :key="index" class="contain_2_wrap">
           <div class="msgTitle">{{item.title}}</div>
           <div class="msgContain" v-html="item.detail"></div>
@@ -63,11 +66,12 @@
     <div class="qyfc">
       <div class="title">企业风采</div>
       <div class="qyfc_container">
-        <el-image v-if="imgsrc2==''">
+        <img v-if="imgsrc2==''" src="../../assets/img/timg.jpg" alt />
+        <!-- <el-image v-if="imgsrc2==''">
           <div slot="error" class="image-slot">
             <i class="el-icon-picture-outline"></i>
           </div>
-        </el-image>
+        </el-image>-->
         <img v-else :src="imgsrc2" alt="企业风采" />
       </div>
     </div>
@@ -84,38 +88,7 @@ export default {
       imgsrc2: "",
       swiperImg: [],
       swiperImg1: [],
-      containData: [
-        {
-          title: "一、运营时间最早",
-          detail:
-            "类比<span>第一家</span>研发成功、产品上市；<span>第一家</span>拥有专利证书；<span>第一家</span>拥有全国最大的驾驶模拟生产车间；<span>第一家</span>获得质量检验国家标准合格产品证书；<span>第一家</span>通过ISO9001:2008国际质量体系认证"
-        },
-        {
-          title: "一、运营时间最早",
-          contain:
-            "类比<span>第一家</span>研发成功、产品上市；<span>第一家</span>拥有专利证书；<span>第一家</span>拥有全国最大的驾驶模拟生产车间；<span>第一家</span>获得质量检验国家标准合格产品证书；<span>第一家</span>通过ISO9001:2008国际质量体系认证"
-        },
-        {
-          title: "一、运营时间最早",
-          contain:
-            "类比<span>第一家</span>研发成功、产品上市；<span>第一家</span>拥有专利证书；<span>第一家</span>拥有全国最大的驾驶模拟生产车间；<span>第一家</span>获得质量检验国家标准合格产品证书；<span>第一家</span>通过ISO9001:2008国际质量体系认证"
-        },
-        {
-          title: "一、运营时间最早",
-          contain:
-            "类比<span>第一家</span>研发成功、产品上市；<span>第一家</span>拥有专利证书；<span>第一家</span>拥有全国最大的驾驶模拟生产车间；<span>第一家</span>获得质量检验国家标准合格产品证书；<span>第一家</span>通过ISO9001:2008国际质量体系认证"
-        },
-        {
-          title: "一、运营时间最早",
-          contain:
-            "类比<span>第一家</span>研发成功、产品上市；<span>第一家</span>拥有专利证书；<span>第一家</span>拥有全国最大的驾驶模拟生产车间；<span>第一家</span>获得质量检验国家标准合格产品证书；<span>第一家</span>通过ISO9001:2008国际质量体系认证"
-        },
-        {
-          title: "一、运营时间最早",
-          contain:
-            "类比<span>第一家</span>研发成功、产品上市；<span>第一家</span>拥有专利证书；<span>第一家</span>拥有全国最大的驾驶模拟生产车间；<span>第一家</span>获得质量检验国家标准合格产品证书；<span>第一家</span>通过ISO9001:2008国际质量体系认证"
-        }
-      ]
+      containData: []
     };
   },
   mounted() {
@@ -208,7 +181,11 @@ export default {
       this.$post(this.url.componyintroSelect, {}).then(res => {
         console.log(res);
         if (res.code == 200) {
-          this.companyDesc = res.data[0].detail;
+          if (res.data.length > 0) {
+            this.companyDesc = res.data[0].detail;
+          } else {
+            this.companyDesc = null;
+          }
         }
       });
       this.$post(this.url.enterpriseSelect, {}).then(res => {
@@ -217,10 +194,6 @@ export default {
           this.containData = res.data;
         }
       });
-    },
-    getCompanyDesc() {
-      const companyInfo = require("../../mockData/companyInfo.json");
-      return companyInfo.desc;
     }
   }
 };

@@ -1,6 +1,7 @@
 <template>
   <div class="cooperate">
-    <img :src="imgsrc" alt class="titleImg" />
+    <img class="titleImg" v-if="imgsrc==''" src="../../assets/img/timg.jpg" alt />
+    <img v-else :src="imgsrc" alt class="titleImg" />
     <div class="cooperate_contain">
       <div class="cooperate_left_menu">
         <div class="leftTitle">{{this.title}}</div>
@@ -86,6 +87,10 @@ export default {
         console.log(res);
         if (res.code == 200) {
           // console.log()
+          if (res.data.length == 0) {
+            this.imgsrc = "";
+            return;
+          }
           this.imgsrc = res.data[0].url;
         }
       });

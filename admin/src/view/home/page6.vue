@@ -23,7 +23,7 @@
         <el-upload
           class="upload-container"
           ref="upload"
-          action="http://47.240.49.244:5000/user/imgAdd?index=5"
+          action="http://120.79.222.61:5000/user/imgAdd?index=5"
           :before-remove="handleRemove"
           :file-list="fileList2"
           list-type="picture"

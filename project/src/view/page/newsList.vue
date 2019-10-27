@@ -1,6 +1,7 @@
 <template>
   <div class="newsPage">
-    <img :src="imgsrc" alt />
+    <img v-if="imgsrc==''" src="../../assets/img/timg.jpg" alt />
+    <img v-else :src="imgsrc" alt />
     <div class="contain_Msg">
       <div class="left">
         <div class="leftTitle">新闻动态</div>
@@ -116,6 +117,10 @@ export default {
         console.log(res);
         if (res.code == 200) {
           // console.log()
+          if (res.data.length == 0) {
+            this.imgsrc = "";
+            return;
+          }
           this.imgsrc = res.data[0].url;
         }
       });

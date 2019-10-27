@@ -6,7 +6,7 @@ const API = require('./API');
 let fs = require('fs');
 let formidable = require('formidable');
 let sd = require('silly-datetime');
-const host = 'http:/47.240.49.244:5000'
+const host = 'http://120.79.222.61:5000'
 
 var path = require("path");
 
