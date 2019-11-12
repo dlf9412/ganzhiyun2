@@ -65,7 +65,6 @@
   </div>
 </template>
 <script>
-import { isNumber } from "util";
 export default {
   data() {
     return {
@@ -88,7 +87,6 @@ export default {
   },
   mounted() {
     this.paramsData = this.$route.query;
-    console.log(this.paramsData);
     if (this.paramsData.type != undefined) {
       this.showNewsDetail(this.paramsData);
     } else {
@@ -104,7 +102,6 @@ export default {
         pagesize: this.pageSize,
         currentPage: this.pageCount
       }).then(res => {
-        console.log(res);
         if (res.code == 200) {
           for (let i = 0; i < res.data.length; i++) {
             res.data[i].data = res.data[i].data.substr(0, 10);
@@ -114,7 +111,6 @@ export default {
         }
       });
       this.$post(this.url.homeImgSelect, { index: 12 }).then(res => {
-        console.log(res);
         if (res.code == 200) {
           // console.log()
           if (res.data.length == 0) {

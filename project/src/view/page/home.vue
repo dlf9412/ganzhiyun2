@@ -89,15 +89,12 @@ export default {
   methods: {
     getimgList() {
       this.$post(this.url.homeImgSelect, { index: 1 }).then(res => {
-        console.log(res);
         if (res.code == 200) {
           // console.log()
           this.imgList = res.data;
-          console.log(this.imgList);
         }
       });
       this.$post(this.url.componySelect, {}).then(res => {
-        console.log(res);
         if (res.code == 200) {
           this.peopleList = [];
           this.peopleList2 = [];
@@ -111,20 +108,18 @@ export default {
         }
       });
       this.$post(this.url.productSelect, {}).then(res => {
-        console.log(res);
         if (res.code == 200) {
           this.serviceList = res.data;
         }
       });
     },
     getNewsList() {
-      const newsList = require("../../mockData/newsList.json");
+      // const newsList = require("../../mockData/newsList.json");
 
       this.$post(this.url.newlistSelect, {
         pagesize: 10,
         currentPage: 1
       }).then(res => {
-        console.log(res);
         if (res.code == 200) {
           for (let i = 0; i < res.data.length; i++) {
             res.data[i].data = res.data[i].data.substr(0, 10);

@@ -29,15 +29,13 @@ export default {
   },
   mounted() {
     // this.companyInfo = this.getCompanyInfo();
-    this.setMapPos();
     this.getData();
+    this.setMapPos();
   },
   methods: {
     getData() {
       this.$post(this.url.homeImgSelect, { index: 15 }).then(res => {
-        console.log(res);
         if (res.code == 200) {
-          // console.log()
           if (res.data.length == 0) {
             this.imgsrc = "";
             return;
@@ -46,9 +44,7 @@ export default {
         }
       });
       this.$post(this.url.callMeSelect, {}).then(res => {
-        console.log(res);
         if (res.code == 200) {
-          // console.log()
           if (res.data.length == 0) {
             this.companyInfo = null;
             return;

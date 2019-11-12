@@ -43,7 +43,7 @@
   </div>
 </template>
 <script>
-import cooperateList from "../../mockData/cooperateList.json";
+// import cooperateList from "../../mockData/cooperateList.json";
 export default {
   data() {
     return {
@@ -56,7 +56,7 @@ export default {
     };
   },
   mounted() {
-    this.list = cooperateList;
+    // this.list = cooperateList;
     this.getData();
     this.getListData("1");
   },
@@ -84,9 +84,7 @@ export default {
     },
     getData() {
       this.$post(this.url.homeImgSelect, { index: 14 }).then(res => {
-        console.log(res);
         if (res.code == 200) {
-          // console.log()
           if (res.data.length == 0) {
             this.imgsrc = "";
             return;
@@ -99,7 +97,6 @@ export default {
       this.$post(this.url.cooporateSelect, {
         type: type
       }).then(res => {
-        console.log(res);
         this.dataList = res.data;
       });
     }
