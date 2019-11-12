@@ -74,10 +74,10 @@ export default {
     };
   },
   mounted() {
-    if (this.$route.query.user) {
-      this.userName = this.$route.query.user;
+    if (sessionStorage.getItem("userInfoStorage")) {
+      this.userName = sessionStorage.getItem("userInfoStorage");
     }
-    console.log(this.$route.query);
+    // console.log(sessionStorage.getItem("userInfoStorage"));
     this.defultActive = this.$route.path;
   },
   methods: {

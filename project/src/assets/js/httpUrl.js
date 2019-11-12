@@ -10,5 +10,6 @@ export default {
   componyintroSelect: host + '/user/componyintro/select',
   enterpriseSelect: host + '/user/compony/enterprise/select',
   cooporateSelect: host + '/user/cooporate/select',
-  callMeSelect: host + '/user/compony/callMe/select'
+  callMeSelect: host + '/user/compony/callMe/select',
+  cooporateModelSelect: host + '/user/cooporateModel/select',
 }

@@ -38,9 +38,15 @@ router.post(httpUrl.cooporateUpdata, (req, res) => {
   })
 })
 
-router.post(httpUrl.cooporateDelete, (req, res) => { //删除新闻
+router.post(httpUrl.cooporateDelete, (req, res) => { //删除
   console.log(req.body)
   let obj = [];
+  if (req.body.html == undefined) {
+    delete1(model.cooporate, req.body).then((response) => {
+      res.send(response)
+    })
+    return
+  }
   let img = req.body.html.split("src=");
   for (let i = 0; i < img.length; i++) {
     if (i < img.length - 1) {

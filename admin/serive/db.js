@@ -72,6 +72,10 @@ const callme = new mongoose.Schema({
   address: String,
   callMeImgUrl: Object
 })
+const cooperatemodel = new mongoose.Schema({
+  title: String,
+  name: String
+})
 // 要导出的模型
 const models = {
   login: mongoose.model('user', user, 'user'),
@@ -82,7 +86,8 @@ const models = {
   compony: mongoose.model('compony', compony, 'compony'),
   componyintro: mongoose.model('componyintro', componyintro, 'componyintro'),
   enterprise: mongoose.model('enterprise', enterprise, 'enterprise'),
-  callme: mongoose.model('callme', callme, 'callme')
+  callme: mongoose.model('callme', callme, 'callme'),
+  cooperatemodel: mongoose.model('cooperatemodel', cooperatemodel, 'cooperatemodel')
 }
 
 
