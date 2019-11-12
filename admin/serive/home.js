@@ -26,6 +26,9 @@ router.post(httpUrl.homeImgSelect, (req, res) => { //图片查找
 
 router.post(httpUrl.homeImgAdd, (req, res) => { //图片添加
   console.log(req.query.index)
+  // if (req.query.index == 3) {
+
+  // }
   dealImg(req).then(reslove => {
     let addObj = {
       index: req.query.index,
@@ -40,6 +43,13 @@ router.post(httpUrl.homeImgAdd, (req, res) => { //图片添加
           msg: '添加成功',
           data: addObj
         }
+        if (req.query.index == 3) {
+          res.send({
+            'link': addObj.url
+          })
+          return
+        }
+
         res.send(obj)
         // res.send(response)
       } else {
@@ -68,6 +78,9 @@ router.post(httpUrl.homeImgDelet, (req, res) => { //图片删除
   })
 
 })
+// function dealImgIndex3() {
+
+// }
 
 
 

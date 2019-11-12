@@ -11,8 +11,8 @@
               <li v-for="(item,index) in componyData" :key="index" class="compony_people">
                 <img :src="item.src" alt />
                 <div>
-                  <div>{{item.name}}({{item.position}})</div>
-                  <div>{{item.detail}}</div>
+                  <div class="people_title">{{item.name}}({{item.position}})</div>
+                  <div class="people_Detail">{{item.detail}}</div>
                   <div style="margin-top:10px;text-align:center">
                     <el-button type="danger" @click="deleteData(item)">删除</el-button>
                     <el-button @click="update(item)">修改</el-button>
@@ -35,12 +35,18 @@
         </div>
         <div class="add_Introduction">
           <div class="add_detail">公司简介</div>
-          <el-input
+          <!-- <el-input
             type="textarea"
             :autosize="{ minRows: 2}"
             placeholder="请输入公司简介文本"
             v-model="textarea"
-          ></el-input>
+          ></el-input>-->
+          <editor
+            :editordataec="textarea"
+            :isupdata="isupdata"
+            @updata="exceptData1"
+            :isshowimg="false"
+          ></editor>
         </div>
         <div style="margin-top:10px">
           <el-button @click="getData2">重置</el-button>
@@ -131,7 +137,7 @@
     </div>
     <!-- 高管信息弹窗 end -->
     <div class="addWrap" v-if="enterpriseShow">
-      <div class="compony_add">
+      <div class="compony_add compony_add1">
         <div class="add_title">{{titleMsg}}</div>
         <i class="el-icon-circle-close" @click="enterpriseShow=false"></i>
         <div class="add_contain">
@@ -214,6 +220,7 @@ export default {
           this.getData();
           break;
         case "third":
+          this.titleMsg = "添加企业实力";
           this.getData3();
           break;
         default:
@@ -374,7 +381,8 @@ export default {
         });
     },
     // 公司简介
-    IntroductionAdd() {
+    exceptData1(data) {
+      // this.textarea=data;
       if (this.Introduction_name == "") {
         this.$message({
           type: "error",
@@ -398,7 +406,7 @@ export default {
       }
       this.$post(this.url.componyintroAdd, {
         name: this.Introduction_name,
-        detail: this.textarea,
+        detail: data,
         intro: this.Introduction_title
       }).then(res => {
         console.log(res);
@@ -407,13 +415,18 @@ export default {
             type: "success",
             message: "提交成功"
           });
+          this.isupdata = false;
         } else {
           this.$message({
             type: "error",
             message: "提交失败"
           });
+          this.isupdata = false;
         }
       });
+    },
+    IntroductionAdd() {
+      this.isupdata = true;
     },
     getData2() {
       this.$post(this.url.componyintroSelect, {}).then(res => {
@@ -474,7 +487,7 @@ export default {
       this.isupdata = false;
     },
     exceptData(data) {
-      if (data == "<p><br></p>") {
+      if (data == "<p></p>") {
         this.$message({
           type: "error",
           message: "当前内容为空，请先填写内容"
@@ -550,13 +563,22 @@ export default {
   margin: 1%;
   flex-grow: 0;
   flex-shrink: 0;
+  border-radius: 8px;
 }
 .compony .compony_people img {
   width: 100px;
   height: 100px;
   margin-right: 20px;
   box-sizing: border-box;
+  flex-shrink: 0;
   /* flex: 1; */
+}
+.compony .people_title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.compony .people_Detail {
+  margin: 10px 0;
 }
 .compony .compony_contain1 {
   position: relative;
@@ -580,6 +602,7 @@ export default {
   z-index: 100;
   background: rgba(0, 0, 0, 0.8);
 }
+
 .compony .compony_add {
   width: 500px;
   height: 470px;
@@ -588,6 +611,16 @@ export default {
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
+}
+.compony .compony_add1 {
+  width: 800px;
+  height: 610px;
+}
+/* .compony .top-div {
+  height: 300px;
+} */
+.compony .fr-element {
+  height: 300px;
 }
 .compony .el-icon-circle-close {
   position: absolute;

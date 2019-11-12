@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="list" v-if="!detail">
-      <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tabs v-model="activeName" @tab-click="handleClick ">
         <el-tab-pane label="产品中心" name="first">
           <ul>
             <li v-if="newlistData.length==0">暂无数据，请添加</li>
@@ -67,16 +67,10 @@
           :on-change="changeimgList"
           :limit="3"
         >
-          <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-
-          <!-- <el-button
-            style="margin-left: 10px;"
-            size="small"
-            type="success"
-            @click="submitUpload"
-          >上传到服务器</el-button>-->
-
-          <div slot="tip" class="el-upload__tip">只能上传3张jpg/png文件，且不超过10M，如果需要替换，请先删除当前图片</div>
+          <div class="img_group">
+            <el-button style="margin:0 10px" slot="trigger" size="small" type="primary">选取文件</el-button>
+            <div slot="tip" class="el-upload__tip">只能上传3张jpg/png文件，且不超过10M，如果需要替换，请先删除当前图片</div>
+          </div>
         </el-upload>
       </div>
 
@@ -565,9 +559,15 @@ export default {
   justify-content: flex-start;
 }
 .product .upload-container {
-  width: 80%;
+  /* width: 80%; */
 }
 .product .el-upload-list__item-name {
   margin-right: 10px;
+}
+.product .img_group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  /* margin-left: -100px; */
 }
 </style>

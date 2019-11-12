@@ -11,7 +11,7 @@
       <div class="left"></div>
       <div class="right">
         <p v-if="companyDesc==null">暂无数据</p>
-        <p v-else>{{companyDesc}}</p>
+        <p v-else v-html="companyDesc">{{}}</p>
       </div>
     </div>
     <div class="splitLine"></div>

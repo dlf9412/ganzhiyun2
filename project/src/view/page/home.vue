@@ -118,8 +118,7 @@ export default {
       });
     },
     getNewsList() {
-      const newsList = require("../../mockData/newsList.json");
-
+      // const newsList = require("../../mockData/newsList.json");
       this.$post(this.url.newlistSelect, {
         pagesize: 10,
         currentPage: 1
@@ -251,6 +250,9 @@ export default {
   align-items: center;
   flex-flow: nowrap;
   padding-left: 1%;
+}
+.home .rightContain img {
+  flex-shrink: 0;
 }
 
 .home .newsAndPeople .peoples .otherPeopleList {

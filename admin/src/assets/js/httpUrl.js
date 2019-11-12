@@ -29,6 +29,11 @@ export default {
   enterpriseUpdata: host + '/user/compony/enterprise/updata',
   enterpriseSelect: host + '/user/compony/enterprise/select',
 
+  cooporateModelAdd: host + '/user/cooporateModel/add',
+  cooporateModelDelete: host + '/user/cooporateModel/delete',
+  cooporateModelUpdata: host + '/user/cooporateModel/updata',
+  cooporateModelSelect: host + '/user/cooporateModel/select',
+
   callMeAdd: host + '/user/compony/callMe/add',
   callMeDelete: host + '/user/compony/callMe/delete',
   callMeUpdata: host + '/user/compony/callMe/updata',

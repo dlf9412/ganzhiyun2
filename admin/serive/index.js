@@ -11,6 +11,7 @@ const home = require('./home')
 const newlist = require('./newlist')
 const product = require('./product')
 const cooporate = require('./cooporate')
+const cooporateModel = require('./cooporateModel')
 const compony = require('./compony')
 const callme = require('./callme')
 
@@ -48,6 +49,7 @@ app.use(product);
 app.use(cooporate);
 app.use(compony);
 app.use(callme);
+app.use(cooporateModel)
 
 
 app.post('/user/post', (req, res) => {

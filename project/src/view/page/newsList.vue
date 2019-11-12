@@ -89,6 +89,7 @@ export default {
   mounted() {
     this.paramsData = this.$route.query;
     console.log(this.paramsData);
+    this.getImgSelect();
     if (this.paramsData.type != undefined) {
       this.showNewsDetail(this.paramsData);
     } else {
@@ -113,6 +114,8 @@ export default {
           this.totalCount = res.data.count;
         }
       });
+    },
+    getImgSelect() {
       this.$post(this.url.homeImgSelect, { index: 12 }).then(res => {
         console.log(res);
         if (res.code == 200) {
@@ -126,7 +129,7 @@ export default {
       });
     },
     getNewsList() {
-      const totalNews = require("../../mockData/newsList.json");
+      // const totalNews = require("../../mockData/newsList.json");
       let currTypeNews = null;
       if (this.currNewsType === 1) {
         currTypeNews = totalNews.companyNews;

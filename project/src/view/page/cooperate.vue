@@ -7,9 +7,9 @@
         <div class="leftTitle">{{this.title}}</div>
         <div
           v-for="item in list"
-          :key="`cooperate-${item.id}`"
+          :key="`cooperate-${item.name}`"
           class="leftMsg"
-          :class="{'active':currId== item.id}"
+          :class="{'active':currId== item.name}"
           @click="changeType(item)"
         >> {{item.title}}</div>
       </div>
@@ -43,7 +43,7 @@
   </div>
 </template>
 <script>
-import cooperateList from "../../mockData/cooperateList.json";
+// import cooperateList from "../../mockData/cooperateList.json";
 export default {
   data() {
     return {
@@ -56,31 +56,32 @@ export default {
     };
   },
   mounted() {
-    this.list = cooperateList;
+    // this.list = cooperateList;
     this.getData();
-    this.getListData("1");
   },
   methods: {
     changeType(item) {
-      this.currId = item.id;
-      switch (item.id) {
-        case "1":
-          this.title = "市场现状";
-          break;
-        case "2":
-          this.title = "盈利模式";
-          break;
-        case "3":
-          this.title = "合作方式";
-          break;
-        case "4":
-          this.title = "合作优势";
-          break;
+      console.log(item);
+      this.currId = item.name;
+      // switch (item.name) {
+      //   case "1":
+      //     this.title = "市场现状";
+      //     break;
+      //   case "2":
+      //     this.title = "盈利模式";
+      //     break;
+      //   case "3":
+      //     this.title = "合作方式";
+      //     break;
+      //   case "4":
+      //     this.title = "合作优势";
+      //     break;
 
-        default:
-          break;
-      }
-      this.getListData(item.id);
+      //   default:
+      //     break;
+      // }
+      this.title = item.title;
+      this.getListData(item.name);
     },
     getData() {
       this.$post(this.url.homeImgSelect, { index: 14 }).then(res => {
@@ -92,6 +93,12 @@ export default {
             return;
           }
           this.imgsrc = res.data[0].url;
+        }
+      });
+      this.$post(this.url.cooporateModelSelect, {}).then(res => {
+        if (res.code == 200) {
+          this.list = res.data;
+          this.getListData(this.list[0].name);
         }
       });
     },
