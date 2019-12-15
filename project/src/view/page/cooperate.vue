@@ -17,33 +17,11 @@
       <div v-else class="cooporate_right_text">
         <h2 style="text-align:center">{{title}}</h2>
         <div v-html="dataList[0].html"></div>
-        <!-- <p style="line-height:0; margin-bottom:15px;">
-          <span
-            class="--mb--rich-text"
-            data-boldtype="0"
-            style="font-family:Arial; font-weight:400; font-size:14px; color:rgb(16, 16, 16); font-style:normal; letter-spacing:0px; line-height:20px; text-decoration:none;"
-          >一、投资渠道</span>
-        </p>
-        <p style="line-height:0; margin-bottom:15px;">
-          <span
-            class="--mb--rich-text"
-            data-boldtype="0"
-            style="font-family:Arial; font-weight:400; font-size:14px; color:rgb(16, 16, 16); font-style:normal; letter-spacing:0px; line-height:20px; text-decoration:none;"
-          >1、驾校或者驾驶培训中心</span>
-        </p>
-        <p style="line-height:0; margin-bottom:15px;">
-          <span
-            class="--mb--rich-text"
-            data-boldtype="0"
-            style="font-family:Arial; font-weight:400; font-size:14px; color:rgb(16, 16, 16); font-style:normal; letter-spacing:0px; line-height:20px; text-decoration:none;"
-          >驾驶学员最集中的地区就是这些学校和中心，几乎所有的学员都是通过驾校和培训中心参加驾驶考试。驾校和教练对学员有非常强的影响力。可以租赁模式向学员推荐，接受度高，效果很好。</span>
-        </p>-->
       </div>
     </div>
   </div>
 </template>
 <script>
-// import cooperateList from "../../mockData/cooperateList.json";
 export default {
   data() {
     return {
@@ -56,30 +34,11 @@ export default {
     };
   },
   mounted() {
-    // this.list = cooperateList;
     this.getData();
   },
   methods: {
     changeType(item) {
-      console.log(item);
       this.currId = item.name;
-      // switch (item.name) {
-      //   case "1":
-      //     this.title = "市场现状";
-      //     break;
-      //   case "2":
-      //     this.title = "盈利模式";
-      //     break;
-      //   case "3":
-      //     this.title = "合作方式";
-      //     break;
-      //   case "4":
-      //     this.title = "合作优势";
-      //     break;
-
-      //   default:
-      //     break;
-      // }
       this.title = item.title;
       this.getListData(item.name);
     },

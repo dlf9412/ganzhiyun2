@@ -257,10 +257,8 @@ export default {
   margin-top: 20px;
 }
 
-.newsPage .newsInfo .newsContent {
-  padding: 0;
-  margin: 0;
-  line-height: 50px;
+.newsInfo .newsTitle{
+  line-height: 60px;
 }
 
 .newsPage .newsInfo .newsOthers {
@@ -270,7 +268,9 @@ export default {
   justify-content: space-between;
 }
 
+
 .newsPage .newsInfo .newsContent {
-  padding: 20px;
+  line-height: 25px;
+  text-indent: 2rem;
 }
 </style>
