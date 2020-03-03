@@ -2,14 +2,14 @@
   <div id="app">
     <Header></Header>
     <div class="nav">
-      <div
-        v-for="(item,index) in header2Text"
+      <div 
+        v-for="(item,index) in navItemList"
         :class="{'choseHeader':index==choseIndex}"
         :key="index"
         @click="goto(item.router,index)"
       >
         {{item.title}}
-        <span v-if="index<header2Text.length-1"></span>
+        <span v-if="index<navItemList.length-1"></span>
       </div>
     </div>
     <div class="pageContain">
@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       choseIndex: "",
-      header2Text: [
+      navItemList: [
         {
           title: "网站首页",
           router: "/"
@@ -61,8 +61,8 @@ export default {
   },
   mounted() {
     this.fontSizeSet();
-    for (let i = 0; i < this.header2Text.length; i++) {
-      if (this.$route.path == this.header2Text[i].router) {
+    for (let i = 0; i < this.navItemList.length; i++) {
+      if (this.$route.path == this.navItemList[i].router) {
         this.choseIndex = i;
       }
     }
@@ -77,7 +77,7 @@ export default {
       this.$router.push(router);
     },
     fontSizeSet() {
-      (function(doc, win) {
+         (function(doc, win) {
         var docEl = doc.documentElement,
           resizeEvt =
             "orientationchange" in window ? "orientationchange" : "resize",
@@ -98,8 +98,8 @@ export default {
   },
   watch: {
     path: function() {
-      for (let i = 0; i < this.header2Text.length; i++) {
-        if (this.$route.path == this.header2Text[i].router) {
+      for (let i = 0; i < this.navItemList.length; i++) {
+        if (this.$route.path == this.navItemList[i].router) {
           this.choseIndex = i;
         }
       }
@@ -163,7 +163,7 @@ h2 {
 
 .nav .choseHeader {
   color: #359b34;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   cursor: pointer;
   border-bottom: 2px solid #359b34;
 }

@@ -1,34 +1,35 @@
 <template>
   <div class="newsPage">
-    <img v-if="imgsrc==''" src="../../assets/img/timg.jpg" alt />
+    <img v-if="imgsrc == ''" src="../../assets/img/timg.jpg" alt />
     <img v-else :src="imgsrc" alt />
     <div class="contain_Msg">
       <div class="left">
         <div class="leftTitle">新闻动态</div>
         <div
           v-for="item in newsTypeList"
-          :key="`newsType`+item.id"
+          :key="`newsType` + item.id"
           class="leftMsg"
-          :class="{'active':currNewsType==item.id}"
+          :class="{ active: currNewsType == item.id }"
           @click="selectNewsType(item.id)"
-        >> {{item.value}}</div>
+        >> {{ item.value }}</div>
       </div>
+
       <div class="right">
-        <div class="newsTypeList" v-if="newsDetailId==-1">
+        <div class="newsTypeList" v-if="newsDetailId == -1">
           <div
             class="infoListData"
-            v-for="(item,index) in newsList"
+            v-for="(item, index) in newsList"
             :key="index"
             @click="showNewsDetail(item)"
           >
             <div>
               <span>·</span>
-              {{item.title}}
+              {{ item.title }}
             </div>
-            <div>{{item.data}}</div>
+            <div>{{ item.data }}</div>
           </div>
-          <div v-if="newsList.length==0">暂无数据</div>
-          <div class="pagination_" v-if="newsList.length>10">
+          <div v-if="newsList.length == 0">暂无数据</div>
+          <div class="pagination_" v-if="newsList.length > 10">
             <!-- <el-pagination
               @size-change="handleSizeChange"
               @current-change="handleCurrentChange"
@@ -48,15 +49,21 @@
             ></el-pagination>
           </div>
         </div>
-        <div class="newsInfo" v-if="newsDetailId!==-1">
-          <div class="returnList" @click="newsDetailId=-1;getData(currNewsType=='1'?'公司新闻':'行业新闻')">
+        <div class="newsInfo" v-if="newsDetailId !== -1">
+          <div
+            class="returnList"
+            @click="
+              newsDetailId = -1;
+              getData(currNewsType == '1' ? '公司新闻' : '行业新闻');
+            "
+          >
             <i class="el-icon-arrow-left"></i>
             返回列表
           </div>
-          <h2 class="newsTitle">{{newsDetailInfo.title}}</h2>
+          <h2 class="newsTitle">{{ newsDetailInfo.title }}</h2>
           <div class="newsOthers">
-            <span>{{newsDetailInfo.type}}</span>
-            <span>{{newsDetailInfo.data}}</span>
+            <span>{{ newsDetailInfo.type }}</span>
+            <span>{{ newsDetailInfo.data }}</span>
           </div>
           <div class="newsContent" v-html="newsDetailInfo.html"></div>
         </div>
@@ -116,7 +123,6 @@ export default {
     getImgSelect() {
       this.$post(this.url.homeImgSelect, { index: 12 }).then(res => {
         if (res.code == 200) {
-          // console.log()
           if (res.data.length == 0) {
             this.imgsrc = "";
             return;
@@ -257,7 +263,7 @@ export default {
   margin-top: 20px;
 }
 
-.newsInfo .newsTitle{
+.newsInfo .newsTitle {
   line-height: 60px;
 }
 
@@ -267,7 +273,6 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-
 
 .newsPage .newsInfo .newsContent {
   line-height: 25px;

@@ -96,9 +96,8 @@ kill -9                 # 杀死某个进程
 ```
 
 ## 查看数据库的信息
-进入数据库存储位置--/usr/local/mongodb
-
-----./mongo，就会启动数据库的shell
+进入数据库存储位置 /usr/local/mongodb 
+然后输入 ./mongo，就会启动数据库的shell
 
 相关的数据库操作参考：https://www.runoob.com/mongodb/mongodb-tutorial.html
 
@@ -111,16 +110,22 @@ npm build
 
 2、将dist文件夹拷贝到服务器目录：
 ```
-# 此处写清楚具体放到服务器哪个目录
+/home
 ```
+
+## 后台系统登录帐号
+
+- 帐号：jackyAdmin
+- 密码：gzyAdmin1103
+
 
 3、启动后台服务
 ```
-方式1：执行执行以下命令
-sudo nohup node  /home/serive/index.js >/dev/null 2>&1 &
+方式1：根目录执行以下命令
+sudo nohup node /home/serive/index.js
 
-# 方式2 先进入到/home/serive/目录，然后执行以下命令：
-nohup node ./index.js &
+# 方式2：先进入到 /home/serive/ 目录，然后执行以下命令： 
+nohup node ./index.js
 ```
 
 查看命令执行后日志输出
@@ -137,12 +142,12 @@ exit                #表示异常退出
 
 5、配置nginx
 ```
-/etc/nginx/nginx.conf
+编辑文件 /etc/nginx/nginx.conf
 
 # 具体如何配置？？？
 ```
 
-6、配置后重新启动
+6、配置后重新启动nginx
 ```
 /usr/sbin/nginx -s reload
 ```
