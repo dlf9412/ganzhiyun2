@@ -49,7 +49,7 @@
       <div class="underLineTitle">
         <span>驾培生态产品及服务</span>
       </div>
-      <div style="text-align:center;" v-if="serviceList.length==0">暂无数据</div>
+      <div style="text-align:center;line-height:100px" v-if="serviceList.length==0">暂无数据</div>
       <div v-else class="serviceList">
         <div
           class="serviceItem"
@@ -292,7 +292,7 @@ export default {
   flex-wrap: wrap;
 }
 .home .service .serviceList .serviceItem {
-  height: 380px;
+  height: 420px;
   width: 300px;
   margin-bottom: 20px;
   border: 1px solid rgb(237, 237, 237);
@@ -311,14 +311,15 @@ export default {
   padding-left: 10px;
   color: rgb(255, 112, 67);
   font-size: 1.25rem;
+  font-weight:bold;
 }
 .home .serviceItemDetail {
-  line-height: 22px;
+  line-height: 1.2rem;
   font-size: 1rem;
 }
 
 .home .serviceItemDetail div {
-  padding: 4px 0px 0px 1rem;
+  padding: 2px 1rem;
 }
 .home .serviceItemDetail div p {
   display: -webkit-box;

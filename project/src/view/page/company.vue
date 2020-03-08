@@ -24,13 +24,12 @@
           <div class="msgContain" v-html="item.detail"></div>
         </div>
       </div>
-      <div class="swiper_box">
+      <div class="swiper_box" v-if="swiperImg.length!=0" >
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(item,index) in swiperImg" :key="index">
               <img :src="item.url" alt />
             </div>
-            <div class="swiper-slide" v-if="swiperImg.length==0">暂无数据</div>
           </div>
           <!-- 如果需要分页器 -->
           <div class="swiper-pagination"></div>
@@ -43,12 +42,11 @@
           <!-- <div class="swiper-scrollbar"></div> -->
         </div>
 
-        <div class="swiper-container1">
+        <div class="swiper-container1" v-if="swiperImg1.length!=0">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(item,index) in swiperImg1" :key="index">
               <img :src="item.url" alt />
             </div>
-            <div class="swiper-slide" v-if="swiperImg1.length==0">暂无数据</div>
           </div>
           <!-- 如果需要分页器 -->
           <div class="swiper-pagination1"></div>
@@ -224,8 +222,8 @@ export default {
 
 .company .contain_1 .left {
   background-image: url("../../assets/img/about_icon.png");
-  width: 350px;
-  height: 450px;
+  width: 279px;
+  height: 400px;
   font-size: 3rem;
   display: flex;
   align-items: center;
@@ -258,6 +256,7 @@ export default {
   padding: 15px 15px 20px;
   border-radius: 5px;
   margin: 10px 3%;
+  min-height: 120px;
 }
 .company .contain_2 .contain_2_wrap .msgTitle {
   font-size: 1.3rem;
@@ -267,6 +266,7 @@ export default {
   font-size: 0.9rem;
   text-indent: 2rem;
   text-align: left;
+  line-height: 1.6rem;
 }
 .company .contain_2 .contain_2_wrap .msgContain span {
   color: #14e5e7;
