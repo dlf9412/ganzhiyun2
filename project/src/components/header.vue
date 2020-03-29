@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="left">
-      <img src="../assets/img/logo.png" alt="公司logo" />
+      <img src="../assets/img/logo.jpg" alt="公司logo" />
       <div class="left-text">{{companyName}}</div>
     </div>
     <div class="right">{{slogan}}</div>

@@ -2,6 +2,7 @@
   <div class="product">
     <img class="titleImg" v-if="imgsrc==''" src="../../assets/img/timg.jpg" alt />
     <img v-else :src="imgsrc" alt class="titleImg" />
+    <!---- 产品列表页面 ----->
     <div class="contain" v-if="choseIndexProduct==-1">
       <div class="productTitle">产品中心</div>
       <div v-if="productList.length==0" style="margin-top:20px">暂无数据</div>
@@ -13,7 +14,7 @@
           @click="showDetail(index)"
         >
           <div class="productImgbox" v-if="index%2==0">
-            <img :src="item.productImgUrl[0].url" alt />
+            <img :src="item.productImgUrl[0].url" alt="" />
           </div>
           <div class="productMsgBox">
             <div class="productMsgTitle">{{item.title}}</div>
@@ -25,6 +26,8 @@
         </div>
       </div>
     </div>
+
+    <!--- 产品详细页面 ---->
     <div class="contain" v-if="choseIndexProduct!==-1">
       <div class="show2Product">
         <div class="productTitle">{{showDetailData.title}}</div>
@@ -125,10 +128,11 @@ export default {
 }
 .product .show1Product img {
   width: 100%;
-  height: 16.5rem;
+  height: 100%;
 }
 .product .productImgbox {
-  width: 45%;
+  width: 450px;
+  height:288px ;
 }
 .product .productMsgBox {
   width: 45%;
@@ -140,7 +144,6 @@ export default {
   text-align: left;
   align-items: center;
   box-sizing: border-box;
-  widows: 100%;
   cursor: pointer;
 }
 .product .rightshowProduct {
@@ -151,7 +154,6 @@ export default {
   align-items: center;
   text-align: right;
   box-sizing: border-box;
-  widows: 100%;
   cursor: pointer;
 }
 .product .leftshowProduct .productImgbox {
@@ -162,12 +164,9 @@ export default {
 }
 
 .product .productMsgTitle {
-  /* margin: 2rem 0; */
   color: orange;
-  /* width: 25rem; */
 }
 .product .productMsgDetail p {
-  /* width: 25rem; */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
